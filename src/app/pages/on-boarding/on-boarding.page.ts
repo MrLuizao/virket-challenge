@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-on-boarding',
@@ -7,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class OnBoardingPage implements OnInit {
 
-  constructor() { }
+  constructor( public router: Router) { }
 
   ngOnInit() {
+  }
+
+  viewedOnBoarding(){
+    localStorage.setItem('onBoarding', 'viewed');
+    this.router.navigateByUrl('home');
   }
 
 }
