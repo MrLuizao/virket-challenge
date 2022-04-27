@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ModalController } from '@ionic/angular';
+import { LoginComponent } from 'src/app/components/modals/login/login.component';
 import { IUserData } from 'src/app/interfaces/data-user.interface';
 import { ApiDataService } from 'src/app/services/api-data.service';
 
@@ -13,7 +15,7 @@ export class HomePage implements OnInit {
   picUrl: string;
   nameUser: string;
 
-  constructor( private apiService: ApiDataService) { }
+  constructor( private apiService: ApiDataService, public modalController: ModalController) { }
 
   ngOnInit() {
     
@@ -23,8 +25,15 @@ export class HomePage implements OnInit {
       this.picUrl = this.userObject.picture['thumbnail'];
       let indexOf = this.userObject['fullName'].indexOf(" ");
       this.nameUser = this.userObject['fullName'].substring(0, indexOf);
-
     });
+
+  }
+
+  async cardLoginModal(){
+    const modal = await this.modalController.create({
+      component: LoginComponent,
+    });
+    modal.present();
   }
 
 }

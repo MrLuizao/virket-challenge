@@ -1,7 +1,7 @@
 
 export interface IUserData{
     email: string;
-    fullName: any;
+    fullName: string;
     gender: string;
     picture: [ImagesModdel];
 }

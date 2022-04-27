@@ -14,14 +14,15 @@
     </ion-row>
 
     <ion-row>
-      <span>Bienvenido de vuelta, {{nameUser}}</span>
+      <span class="txt-gray-min">Bienvenido de vuelta, {{nameUser}}</span>
     </ion-row>
 
-    <ion-col size="10">
-      <ion-button color="primary">Entrar</ion-button>
+    <ion-col size="9">
+      <ion-button color="primary" (click)="cardLoginModal()">Entrar</ion-button>
+      <!-- <ion-button color="primary" (click)="openModal()">Entrar</ion-button> -->
     </ion-col>
 
-    <ion-col size="10">
+    <ion-col size="9">
       <ion-button>Entrar como invitado</ion-button>
     </ion-col>
 

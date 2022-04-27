@@ -1,3 +1,13 @@
+ion-button{
+    --border-radius: 25px;
+    width: 100%;
+}
+.pad-1{
+    padding: 1em;
+}
+.top-1{
+    margin-top: 1em;
+}
 #logo-img{
     width: 10em;
 }
@@ -6,7 +16,17 @@
     height:100px; 
     width:100px; 
 }
-ion-button{
-    --border-radius: 25px;
-    width: 100%;
+.txt-gray-max{
+    color: var(--ion-text-gray);
+    // font-family: 'Raleway';
+    // font-style: normal;
+    font-weight: 700;
+    font-size: 35px;
+}
+.txt-gray-min{
+    color: var(--ion-text-gray);
+    // font-family: 'Raleway';
+    // font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
 }

@@ -9,6 +9,5 @@ ion-button {
     width: 100%;
     --background: #fff;
     --border-style: solid;
-    --border-color: orange;
-    --color: orange;
+    --color: var(--ion-color-primary);
 }
