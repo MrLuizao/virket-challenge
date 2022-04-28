@@ -20,6 +20,10 @@ const routes: Routes = [
     canActivate: [PrevUserGuard]
     
   },
+  {
+    path: 'dashboard',
+    loadChildren: () => import('./pages/dashboard/dashboard.module').then( m => m.DashboardPageModule)
+  },
 ];
 
 @NgModule({

@@ -1,8 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import { LoginComponent } from 'src/app/components/modals/login/login.component';
-import { IUserData } from 'src/app/interfaces/data-user.interface';
-import { ApiDataService } from 'src/app/services/api-data.service';
+import { Store } from '@ngrx/store';
+import { Router } from '@angular/router';
+import { AppState } from 'src/app/redux/app.reducer';
+import { User } from 'src/app/redux/models/user.model';
+import { setUser } from 'src/app/redux/user/user.actions';
+
 
 @Component({
   selector: 'app-home',
@@ -11,22 +15,29 @@ import { ApiDataService } from 'src/app/services/api-data.service';
 })
 export class HomePage implements OnInit {
 
-  userObject: IUserData;
+  userObject: User;
   picUrl: string;
   nameUser: string;
+  messageHome: string;
+  isGuest: boolean;
 
-  constructor( private apiService: ApiDataService, public modalController: ModalController) { }
+  constructor(  private store: Store<AppState>,
+                public router: Router,
+                public modalController: ModalController) { }
 
   ngOnInit() {
-    
-    this.apiService.getUserData().subscribe( (data: IUserData) =>{
-      this.userObject = data['data'];
 
-      this.picUrl = this.userObject.picture['thumbnail'];
+    this.store.select('user').subscribe( (store)=>{
+      this.userObject = store.user;
+      
+      this.isGuest = this.userObject['guest'];
+      this.picUrl = this.userObject['picture'];
+      this.messageHome = this.userObject['titleText'];
+      
       let indexOf = this.userObject['fullName'].indexOf(" ");
       this.nameUser = this.userObject['fullName'].substring(0, indexOf);
-    });
-
+    })
+    
   }
 
   async cardLoginModal(){
@@ -34,6 +45,24 @@ export class HomePage implements OnInit {
       component: LoginComponent,
     });
     modal.present();
+  }
+
+  goEntryAfterRegistry(){
+    this.router.navigateByUrl('dashboard');
+  }
+
+  accessAsGuest(){
+
+    const UPDATE_USER = {
+      fullName: 'Invitado',
+      email: '',
+      titleText: 'Bienvenido',
+      picture: 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png',
+      guest: true
+    } 
+    this.store.dispatch( setUser({ user: UPDATE_USER}) );
+    this.router.navigateByUrl('dashboard');
+
   }
 
 }
