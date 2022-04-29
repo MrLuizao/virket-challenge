@@ -7,7 +7,6 @@ export interface State {
 }
 
 export const initialState: State = {
-    // user: null
     user: {
         fullName: '',
         email: '',

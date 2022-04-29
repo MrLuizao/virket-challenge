@@ -14,6 +14,9 @@ ion-button{
 .mb-1{
     margin-bottom: 1em;
 }
+.ml-1{
+    margin-left: 1em;
+}
 #logo-img{
     width: 10em;
 }
@@ -36,3 +39,19 @@ ion-button{
     font-weight: 400;
     font-size: 18px;
 }
+
+.txt-gray-title{
+    font-weight: 500;
+    font-size: 24px;
+}
+
+.flex{
+    display: flex;
+}
+.jf-c{
+    justify-content: center;
+}
+.ai-c{
+    align-items: center;
+}
+  
