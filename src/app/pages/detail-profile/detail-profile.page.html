@@ -3,10 +3,40 @@
     <ion-buttons slot="start" mode="ios">
       <ion-back-button defaultHref="/" color="tertiary"></ion-back-button>
     </ion-buttons>
-    <ion-title color="tertiary">Mi Perfil</ion-title>
+    <ion-title color="tertiary" style="font-size: x-large;">Mi Perfil</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+
+  <ion-grid class="contain-grid">
+
+    <ion-row>
+      <ion-col size="5" class="flex jf-c">
+        <img [src]="urlProfile" class="profile-img">
+      </ion-col>
+      <ion-col size="7" class="contain-name">
+        <ion-row>
+          <span class="name-title-bold">Juan Antonio</span>
+        </ion-row>
+        <ion-row>
+          <span class="name-title-light">López Perez</span>          
+        </ion-row>
+      </ion-col>
+      <ion-col class="top-1 ml-1">
+        <span class="mail-title">{{emailDetail}}</span>          
+      </ion-col>
+      <ion-col size="12" class="top-2 ml-1">
+        <img src="assets/svg/btn-view-favs.svg">
+      </ion-col>
+    </ion-row>
+
+    <ion-row class="flex jf-c"> 
+      <ion-col size="9">
+        <ion-button>Cerrar Sesión</ion-button>
+      </ion-col>
+    </ion-row>
+
+  </ion-grid>
 
 </ion-content>

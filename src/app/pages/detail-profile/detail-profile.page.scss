@@ -1,0 +1,50 @@
+.contain-grid{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: space-evenly;
+}
+.profile-img{
+    border-radius: 150px;
+    height: 124px;
+    width: 124px;
+}
+ion-button {
+    --border-radius: 25px;
+    width: 100%;
+    --background: #fff;
+    --border-style: solid;
+    --color: var(--ion-color-primary);
+}
+
+.contain-name{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+// .circle-item{
+//     background-image: url('/assets/images/circle-cut.png'); 
+//     background-position: center;
+//     background-repeat: no-repeat; 
+//     background-size: 75%;
+// }
+
+.name-title-bold{
+    font-style: bold;
+    font-weight: 700;
+    font-size: 28px;
+    color: var(--ion-color-tertiary);
+}
+.name-title-light{
+    font-style: normal;
+    font-weight: 400;
+    font-size: 28px;
+    color: var(--ion-color-secondary);
+}
+.mail-title{
+    font-style: bold;
+    font-weight: 700;
+    font-size: 21px;
+    color: var(--ion-color-primary);
+}
