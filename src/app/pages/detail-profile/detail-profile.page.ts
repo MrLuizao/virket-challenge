@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { AppState } from 'src/app/redux/app.reducer';
 import { User } from 'src/app/redux/models/user.model';
+import { setUser } from 'src/app/redux/user/user.actions';
 
 @Component({
   selector: 'app-detail-profile',
@@ -14,18 +16,36 @@ export class DetailProfilePage implements OnInit {
   urlProfile: string;
   emailDetail: string;
 
-  constructor( private store: Store<AppState>,) { }
+  constructor(  public router: Router, 
+                private store: Store<AppState>) { }
 
   ngOnInit() {
 
     this.store.select('user').subscribe( (store)=>{
       this.detailData = store['user']
-      console.log('this.detailData',this.detailData);
-
       this.urlProfile = this.detailData['picture'];
       this.emailDetail = this.detailData['email'];
-
     });
   }
+  
+  navigateToFavs(){
+    // alert('TEST CLICK ON!!!')
+    this.router.navigateByUrl('favorites');
+  }
+
+  logoutSession(){
+    const RESET_USER = {
+      fullName: 'Invitado',
+      email: '',
+      titleText: 'Bienvenido',
+      picture: 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png',
+      guest: true
+    }
+
+    this.store.dispatch( setUser({ user: RESET_USER}) );
+    this.router.navigateByUrl('home');
+  }
+
+
 
 }

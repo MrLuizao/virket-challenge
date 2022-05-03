@@ -27,13 +27,13 @@
         <span class="mail-title">{{emailDetail}}</span>          
       </ion-col>
       <ion-col size="12" class="top-2 ml-1">
-        <img src="assets/svg/btn-view-favs.svg">
+        <img src="assets/svg/btn-view-favs.svg" (click)="navigateToFavs()">
       </ion-col>
     </ion-row>
 
     <ion-row class="flex jf-c"> 
       <ion-col size="9">
-        <ion-button>Cerrar Sesión</ion-button>
+        <ion-button (click)="logoutSession()">Cerrar Sesión</ion-button>
       </ion-col>
     </ion-row>
 

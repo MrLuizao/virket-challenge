@@ -28,6 +28,14 @@ const routes: Routes = [
     path: 'detail-profile',
     loadChildren: () => import('./pages/detail-profile/detail-profile.module').then( m => m.DetailProfilePageModule)
   },
+  {
+    path: 'favorites',
+    loadChildren: () => import('./pages/favorites/favorites.module').then( m => m.FavoritesPageModule)
+  },
+  {
+    path: 'detail-product',
+    loadChildren: () => import('./pages/detail-product/detail-product.module').then( m => m.DetailProductPageModule)
+  },
 ];
 
 @NgModule({

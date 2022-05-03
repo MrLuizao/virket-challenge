@@ -1,0 +1,78 @@
+<ion-header >
+  <ion-toolbar>
+    <ion-buttons slot="start" mode="ios">
+      <ion-back-button defaultHref="/" color="tertiary"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-grid class="contain-product">
+    <ion-row>
+      <ion-col class="flex jf-c">
+        <img [src]="productItem.product_image" class="product-img">
+      </ion-col>
+    </ion-row>
+
+    <ion-row class="pad-1">
+      <ion-col size="6">
+        <span class="txt-title-product">{{productItem.product_name}}</span>
+      </ion-col>
+      <ion-col style="text-align: end;">
+        <span class="txt-brand" >{{productItem.brand}}</span>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col size="5" class="flex jf-c">
+        <ion-icon name="star" color="warning"></ion-icon>
+        <ion-icon name="star" color="warning"></ion-icon>
+        <ion-icon name="star" color="warning"></ion-icon>
+        <ion-icon name="star-half" color="warning"></ion-icon>
+        <ion-icon name="star-outline" color="warning"></ion-icon>
+      </ion-col>
+      <ion-col size="3" class="flex jf-c">
+        <span class="txt-light">{{productItem.reviews}} Reseñas</span>
+      </ion-col>
+      <ion-col size="4" class="flex jf-c">
+        <span class="price-item"> $ {{productItem.product_price}} </span>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-grid class="card-contain pad-1" [class.opennig]="isOpen" [class.closing]="!isOpen" (click)="tapToMoveCard()">
+
+    <ion-row> 
+      <ion-col size="6" class="txt-label">Colores</ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="6" >
+        <ion-icon name="ellipse" *ngFor="let item of productItem.colors"></ion-icon>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col size="6" class="txt-label">Descripción</ion-col>
+    </ion-row>
+    <ion-row class="top-1">
+      <ion-col>
+        <ion-text color="tertiary"> {{productItem.description}}</ion-text>
+      </ion-col>
+    </ion-row>
+
+  </ion-grid>
+  
+</ion-content>
+
+<ion-footer>
+  <ion-row class="flex ai-c">
+    <ion-col size="3">
+      <img src="assets/svg/btn-fav-fill.svg" *ngIf="productItem.is_favorite">
+      <img src="assets/svg/btn-fav-outline.svg" *ngIf="!productItem.is_favorite">
+    </ion-col>
+    <ion-col size="9">
+      <ion-button>Agregar al carrito</ion-button>
+    </ion-col>
+  </ion-row>
+</ion-footer>

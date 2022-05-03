@@ -1,0 +1,91 @@
+.portrait-item{
+    background-image: url('/assets/images/bg-circle.png'); 
+    background-position: center;
+    background-repeat: no-repeat; 
+    height: 100%;
+    width: 100%;
+}
+ion-content{
+    --background: var(--ion-bgc-page);
+}
+
+.contain-product{
+    display: flex;
+    flex-direction: column;
+    height: 60%;
+    justify-content: space-evenly;
+}
+
+.product-img{
+    width: 40%;
+}
+
+.txt-title-product{
+    font-style: normal;
+    font-weight: 500;
+    font-size: 30px;
+}
+.txt-brand{
+    color: var(--ion-color-secondary);
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    text-transform: uppercase;
+}
+
+.card-contain {
+    background: #FFFFFF;
+    border-radius: 16px 16px 0px 0px;
+    bottom: 0;
+    overflow: scroll;
+    position: fixed;
+    top: 10em;
+    width: 100%;
+    color: var(--ion-color-secondary);
+}
+
+.opennig {
+    transform: translate(0, 10);
+    transition: all 0.5s ease;
+}
+.closing {
+    transform: translate(0, 25em);
+    transition: all 0.5s ease;
+}
+.price-item{
+    font-weight: 700;
+    font-size: 21px;
+    color: var(--ion-color-primary);
+}
+
+.txt-light{
+    color: var(--ion-color-secondary);
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+}
+
+ion-col{
+    font-size: x-large;
+}
+
+.txt-label{
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    color: #000;
+}
+
+ion-footer{
+    border:none;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+ion-button{
+    width: 90%;
+}
