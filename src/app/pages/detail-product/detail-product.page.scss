@@ -1,10 +1,4 @@
-.portrait-item{
-    background-image: url('/assets/images/bg-circle.png'); 
-    background-position: center;
-    background-repeat: no-repeat; 
-    height: 100%;
-    width: 100%;
-}
+
 ion-content{
     --background: var(--ion-bgc-page);
 }
@@ -14,6 +8,11 @@ ion-content{
     flex-direction: column;
     height: 60%;
     justify-content: space-evenly;
+
+    background-image: url(/assets/images/bg-circle.png);
+    background-position: top;
+    background-repeat: no-repeat;
+    background-size: 60%;
 }
 
 .product-img{

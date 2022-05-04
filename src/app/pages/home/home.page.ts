@@ -48,7 +48,8 @@ export class HomePage implements OnInit {
   }
 
   goEntryAfterRegistry(){
-    this.router.navigateByUrl('dashboard');
+    // this.router.navigateByUrl('dashboard');
+    this.router.navigateByUrl('tabs');
   }
 
   accessAsGuest(){
@@ -61,8 +62,8 @@ export class HomePage implements OnInit {
       guest: true
     } 
     this.store.dispatch( setUser({ user: UPDATE_USER}) );
-    this.router.navigateByUrl('dashboard');
-
+    // this.router.navigateByUrl('dashboard');
+    this.router.navigateByUrl('tabs');
   }
 
 }

@@ -6,9 +6,14 @@ import { PrevUserGuard } from './guards/prev-user.guard';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'on-boarding',
+    redirectTo: 'tabs',
     pathMatch: 'full'
   },
+  // {
+  //   path: '',
+  //   redirectTo: 'on-boarding',
+  //   pathMatch: 'full'
+  // },
   {
     path: 'on-boarding',
     loadChildren: () => import('./pages/on-boarding/on-boarding.module').then( m => m.OnBoardingPageModule),
@@ -36,6 +41,14 @@ const routes: Routes = [
     path: 'detail-product',
     loadChildren: () => import('./pages/detail-product/detail-product.module').then( m => m.DetailProductPageModule)
   },
+  {
+    path: 'cart',
+    loadChildren: () => import('./pages/cart/cart.module').then( m => m.CartPageModule)
+  },
+  {
+    path: 'tabs',
+    loadChildren: () => import('./pages/tabs/tabs.module').then( m => m.TabsPageModule)
+  }
 ];
 
 @NgModule({

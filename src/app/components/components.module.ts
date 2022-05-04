@@ -5,6 +5,9 @@ import { LoginComponent } from './modals/login/login.component';
 import { FormsModule } from '@angular/forms';
 import { DiscoverComponent } from './discover/discover.component';
 import { ProfileMenuHeadComponent } from './profile-menu-head/profile-menu-head.component';
+import { FooterTabsComponent } from './footer-tabs/footer-tabs.component';
+import { FavoriteItemsComponent } from './favorite-items/favorite-items.component';
+import { CartTemsComponent } from './cart-tems/cart-tems.component';
 
 
 
@@ -12,7 +15,10 @@ import { ProfileMenuHeadComponent } from './profile-menu-head/profile-menu-head.
   declarations: [
     LoginComponent,
     DiscoverComponent,
-    ProfileMenuHeadComponent
+    ProfileMenuHeadComponent,
+    FooterTabsComponent,
+    CartTemsComponent,
+    FavoriteItemsComponent
   ],
   imports: [
     CommonModule, 
@@ -22,7 +28,10 @@ import { ProfileMenuHeadComponent } from './profile-menu-head/profile-menu-head.
   exports:[
     LoginComponent,
     DiscoverComponent,
-    ProfileMenuHeadComponent
+    ProfileMenuHeadComponent,
+    FooterTabsComponent,
+    CartTemsComponent,
+    FavoriteItemsComponent
   ]
 })
 export class ComponentsModule { }
