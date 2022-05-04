@@ -1,3 +1,14 @@
 ion-content{
     --background: var(--ion-bgc-page);
 }
+.contain-btn{
+    display: flex;
+    bottom: 2em;
+    justify-content: center;
+    position: fixed;
+    width: 100%;
+}
+
+ion-button{
+    width: 80% !important;
+}

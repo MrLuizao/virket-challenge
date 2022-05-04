@@ -1,4 +1,54 @@
 
 <ion-content>
-  <app-cart-tems></app-cart-tems>
+
+  <ion-grid>
+    <ion-row class="top-2">
+      <ion-col>
+        <span class="txt-gray-title ml-1 ">Carrito de compras</span>
+      </ion-col>
+    </ion-row>
+
+    <app-cart-tems></app-cart-tems>
+  </ion-grid>
+
+  <ion-grid class="card-contain pad-1" [class.opennig]="isOpen" [class.closing]="!isOpen" (click)="tapToMoveCard()">
+
+    <ion-row> 
+      <span>Información de pago</span>
+    </ion-row>
+
+    <ion-row> 
+      <ion-col>
+        <span>Subtotal: </span>
+      </ion-col>
+      <ion-col>
+        <span>$4,800</span>
+      </ion-col>
+    </ion-row>
+
+    <ion-row> 
+      <ion-col>
+        <span>Costo de envio </span>
+      </ion-col>
+      <ion-col>
+        <span>$200</span>
+      </ion-col>
+    </ion-row>
+
+    <ion-row> 
+      <ion-col>
+        <span>Total</span>
+      </ion-col>
+      <ion-col>
+        <span>$5, 000</span>
+      </ion-col>
+    </ion-row>
+
+    
+  </ion-grid>
+
+  <div class="contain-btn">
+    <ion-button>Proceder al pago</ion-button>
+  </div>
+
 </ion-content>

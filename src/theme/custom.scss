@@ -54,3 +54,25 @@ ion-button{
 .ai-c{
     align-items: center;
 }
+
+.card-contain {
+    background: #FFFFFF;
+    border-radius: 16px 16px 0px 0px;
+    bottom: 0;
+    overflow: scroll;
+    position: fixed;
+    top: 10em;
+    width: 100%;
+    color: var(--ion-color-secondary);
+    box-shadow: 0px -5px 10px rgba(0, 0, 0, 0.1);
+}
+
+
+.opennig {
+    transform: translate(0, 10);
+    transition: all 0.5s ease;
+}
+.closing {
+    transform: translate(0, 25em);
+    transition: all 0.5s ease;
+}

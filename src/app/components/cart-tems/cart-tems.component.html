@@ -1,9 +1,22 @@
-<ion-grid>
-  <div *ngFor="let item of cartItems" class="card-row">
-    <ion-row >
-      <ion-col size="2">
-        <img [src]="item.product_image"/>
-      </ion-col>
-    </ion-row>
-  </div>
-</ion-grid>
+
+<div *ngFor="let item of cartItems" class="card-row">
+  <ion-row class="contain-row">
+    <ion-col size="2">
+      <img [src]="item.product_image"/>
+    </ion-col>
+    <ion-col size="5">
+      <ion-row>
+        <span>{{item.product_name}}</span>
+      </ion-row>
+      <ion-row>
+        <span> Color {{item.colors[0].name}}</span>
+      </ion-row>
+    </ion-col>
+    <ion-col size="4">
+      <span> $ {{item.product_price}}</span>
+    </ion-col>
+    <ion-col size="1">
+      <ion-icon name="remove-circle-outline" color="secondary"></ion-icon>    
+    </ion-col>
+  </ion-row>
+</div>

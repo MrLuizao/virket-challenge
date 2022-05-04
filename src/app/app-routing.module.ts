@@ -4,16 +4,16 @@ import { NewUserGuard } from './guards/new-user.guard';
 import { PrevUserGuard } from './guards/prev-user.guard';
 
 const routes: Routes = [
-  {
-    path: '',
-    redirectTo: 'tabs',
-    pathMatch: 'full'
-  },
   // {
   //   path: '',
-  //   redirectTo: 'on-boarding',
+  //   redirectTo: 'tabs',
   //   pathMatch: 'full'
   // },
+  {
+    path: '',
+    redirectTo: 'on-boarding',
+    pathMatch: 'full'
+  },
   {
     path: 'on-boarding',
     loadChildren: () => import('./pages/on-boarding/on-boarding.module').then( m => m.OnBoardingPageModule),

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { IProduct } from 'src/app/interfaces/product.interface';
 
 @Component({
   selector: 'app-cart',
@@ -7,9 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CartPage implements OnInit {
 
+  productItem: IProduct;
+  isOpen: boolean = false;
+  
   constructor() { }
 
   ngOnInit() {
+  }
+
+  tapToMoveCard(){
+    this.isOpen = !this.isOpen;
   }
 
 }
