@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
 import { IProduct } from 'src/app/interfaces/product.interface';
 
 @Component({
@@ -8,12 +10,19 @@ import { IProduct } from 'src/app/interfaces/product.interface';
 })
 export class CartPage implements OnInit {
 
-  productItem: IProduct;
   isOpen: boolean = false;
   
-  constructor() { }
+  itemsCart$: Observable<any>
+  cartProducts = [];
+  
+  constructor( private store: Store<any> ) { }
 
   ngOnInit() {
+    this.itemsCart$ = this.store.select(store => store.cart);
+    this.itemsCart$.subscribe( (data)=>{
+      this.cartProducts = data;
+      console.log('this.cartProducts', this.cartProducts);
+    }).unsubscribe();
   }
 
   tapToMoveCard(){

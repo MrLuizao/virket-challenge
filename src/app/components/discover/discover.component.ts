@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Store } from '@ngrx/store';
 import { IProduct } from 'src/app/interfaces/product.interface';
+import { AddItemAction } from 'src/app/redux/product/product.actions';
 import { ApiProductsService } from 'src/app/services/api-products.service';
 import { BindBehaviorService } from 'src/app/services/rxjs/bind-behavior.service';
 
@@ -26,10 +28,6 @@ export class DiscoverComponent implements OnInit {
   viewDetailPage(itemParam: IProduct){    
     this.behaviourSrv.setDataItem(itemParam);
     this.router.navigateByUrl('detail-product');
-  }
-
-  addToCart(){
-    alert('SÍ FUNCIONA!!')
   }
 
 }

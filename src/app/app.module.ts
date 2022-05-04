@@ -12,6 +12,7 @@ import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from 'src/environments/environment';
 import { appReducers } from './redux/app.reducer';
+import { cartReducer } from './redux/product/product.reducer';
 
 
 @NgModule({
@@ -23,6 +24,7 @@ import { appReducers } from './redux/app.reducer';
     AppRoutingModule, 
     HttpClientModule,
     StoreModule.forRoot( appReducers ),
+
     StoreDevtoolsModule.instrument({
       maxAge: 25, // Retains last 25 states
       logOnly: environment.production, // Restrict extension to log-only mode
