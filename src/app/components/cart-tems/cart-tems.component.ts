@@ -19,7 +19,7 @@ export class CartTemsComponent implements OnInit {
     this.itemsCart$ = this.store.select(store => store.cart);
     this.itemsCart$.subscribe( (data)=>{
       this.cartProducts = data;
-    }).unsubscribe();
+    });
 
   }
 

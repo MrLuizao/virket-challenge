@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { LoginComponent } from 'src/app/components/modals/login/login.component';
 import { IProduct } from 'src/app/interfaces/product.interface';
 import { AddItemAction } from 'src/app/redux/product/product.actions';
+import { ToastService } from 'src/app/services/alerts/toast.service';
 import { BindBehaviorService } from 'src/app/services/rxjs/bind-behavior.service';
 
 @Component({
@@ -16,8 +16,8 @@ export class DetailProductPage implements OnInit {
   isOpen: boolean = false;
 
   constructor(  private behaviourSrv: BindBehaviorService,
-                private store: Store<any>,
-                ) { }
+                public toastSrv: ToastService,
+                private store: Store<any> ) { }
 
   ngOnInit() {
     this.behaviourSrv.$getDataItem.subscribe( (resp: IProduct) =>{
@@ -31,6 +31,7 @@ export class DetailProductPage implements OnInit {
 
   setProductCart(paramItem : any){
     this.store.dispatch( new AddItemAction(paramItem));
+    this.toastSrv.showToastAlert('Producto agregado correctamente');
   }
 
 }

@@ -12,3 +12,26 @@ ion-content{
 ion-button{
     width: 80% !important;
 }
+
+.cost-item{
+    display: grid;
+    justify-content: flex-end;
+}
+
+.underline{
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+}
+
+.opennig {
+    transform: translate(0, 10);
+    transition: all 0.5s ease;
+}
+.closing {
+    transform: translate(0, 25em);
+    transition: all 0.5s ease;
+}
+
+.pad-scrollin{
+    padding-bottom: 100%;
+}

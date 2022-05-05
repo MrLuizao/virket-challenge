@@ -4,11 +4,6 @@ import { NewUserGuard } from './guards/new-user.guard';
 import { PrevUserGuard } from './guards/prev-user.guard';
 
 const routes: Routes = [
-  // {
-  //   path: '',
-  //   redirectTo: 'tabs',
-  //   pathMatch: 'full'
-  // },
   {
     path: '',
     redirectTo: 'on-boarding',
@@ -48,6 +43,10 @@ const routes: Routes = [
   {
     path: 'tabs',
     loadChildren: () => import('./pages/tabs/tabs.module').then( m => m.TabsPageModule)
+  },
+  {
+    path: 'filter',
+    loadChildren: () => import('./pages/filter/filter.module').then( m => m.FilterPageModule)
   }
 ];
 

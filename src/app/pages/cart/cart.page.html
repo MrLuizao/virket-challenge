@@ -1,7 +1,7 @@
 
 <ion-content>
 
-  <ion-grid>
+  <ion-grid class="pad-scrollin">
     <ion-row class="top-2">
       <ion-col>
         <span class="txt-gray-title ml-1 ">Carrito de compras</span>
@@ -14,33 +14,47 @@
   <ion-grid class="card-contain pad-1" [class.opennig]="isOpen" [class.closing]="!isOpen" (click)="tapToMoveCard()">
 
     <ion-row> 
-      <span>Información de pago</span>
-    </ion-row>
-
-    <ion-row> 
       <ion-col>
-        <span>Subtotal: </span>
-      </ion-col>
-      <ion-col>
-        <span>$4,800</span>
+        <ion-text color="tertiary">
+          <span>Información de pago</span>
+        </ion-text>
       </ion-col>
     </ion-row>
 
-    <ion-row> 
+    <ion-row class="underline"> 
+      <ion-col>
+        <ion-text color="secondary">
+          <span>Subtotal: </span>
+        </ion-text>
+      </ion-col>
+      <ion-col class="cost-item">
+        <ion-text color="tertiary">
+          <span>$4,800</span>
+        </ion-text>
+      </ion-col>
+    </ion-row>
+
+    <ion-row class="underline"> 
       <ion-col>
         <span>Costo de envio </span>
       </ion-col>
-      <ion-col>
-        <span>$200</span>
+      <ion-col class="cost-item">
+        <ion-text color="tertiary">
+          <span>$200</span>
+        </ion-text>
       </ion-col>
     </ion-row>
 
     <ion-row> 
       <ion-col>
-        <span>Total</span>
+        <ion-text color="tertiary">
+          <span>Total</span>
+        </ion-text>
       </ion-col>
-      <ion-col>
-        <span>$5, 000</span>
+      <ion-col class="cost-item">
+        <ion-text color="tertiary">
+          <span>$5, 000</span>
+        </ion-text>
       </ion-col>
     </ion-row>
 
@@ -52,3 +66,4 @@
   </div>
 
 </ion-content>
+

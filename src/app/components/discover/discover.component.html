@@ -7,7 +7,7 @@
   <ion-row>
     <ion-col size="6" class="pad-1" *ngFor="let item of productsData">        
       <ion-row >
-        <div class="card-item" (click)="viewDetailPage(item)">
+        <div class="card-item">
 
           <ion-row class="head-row mb-1">
             <ion-col size="9">
@@ -24,7 +24,7 @@
             </ion-col>
           </ion-row>
 
-          <ion-row class="mb-1" style="justify-content: center;">
+          <ion-row class="mb-1 jf-c" (click)="viewDetailPage(item)">
             <img [src]="item.product_image" style="max-height: 8em;">
           </ion-row>
 
@@ -38,10 +38,11 @@
                 <ion-icon name="star-half" color="warning"></ion-icon>
               </ion-row>
             </ion-col>
-            <ion-col size="5" class="btn-add">
+            <ion-col size="5" class="btn-add" (click)="addToCart(item)">
               <ion-icon name="add-outline"></ion-icon>
             </ion-col>
           </ion-row>
+
         </div>
       </ion-row>
 

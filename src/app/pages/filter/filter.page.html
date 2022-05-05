@@ -1,0 +1,78 @@
+
+<ion-content>
+
+  <ion-grid>
+    <ion-row class="top-2 ai-c">
+      <ion-col size="9">
+        <span class="txt-gray-title ml-1 ">Selecciona la marca</span>
+      </ion-col>
+      <ion-col size="3" class="flex jf-c">
+        <ion-icon name="search" class="icon-search"></ion-icon>
+      </ion-col>
+    </ion-row>
+
+    <ion-row class="top-1">
+      <ion-slides [options]="slideOpts">
+        <ion-slide>
+          <ion-chip (click)="applyFilter('allItems')">
+            <ion-label>Todos</ion-label>
+          </ion-chip>
+        </ion-slide>
+    
+        <ion-slide *ngFor="let brand of brands">
+          <ion-chip (click)="applyFilter(brand)">
+            <ion-label>{{brand}}</ion-label>
+          </ion-chip>
+        </ion-slide>
+    
+      </ion-slides>
+    </ion-row>
+  </ion-grid>
+  
+  <ion-grid class="pad-1">
+
+    <ion-row>
+      <ion-col size="6" class="pad-1" *ngFor="let item of filterData">        
+        <ion-row >
+          <div class="card-item">
+  
+            <ion-row class="head-row mb-1">
+              <ion-col size="9">
+                <ion-row>
+                  <span class="txt-card-sub">{{item.brand}}</span>
+                </ion-row>
+                <ion-row>
+                  <span class="txt-card-title">{{item.product_name}}</span>  
+                </ion-row>
+              </ion-col>
+              <ion-col size="3">
+                <ion-icon name="heart-outline" class="iconSize" *ngIf="!item.is_favorite"></ion-icon>
+                <ion-icon name="heart" class="iconSize fill" *ngIf="item.is_favorite"></ion-icon>
+              </ion-col>
+            </ion-row>
+  
+            <ion-row class="mb-1" style="justify-content: center;">
+              <img [src]="item.product_image" style="max-height: 8em;">
+            </ion-row>
+  
+            <ion-row>
+              <ion-col>
+                <ion-row>
+                  <span class="txt-card-price"> $ {{item.product_price}}</span>
+                </ion-row>
+                <ion-row style="padding-left: 0.5em;">
+                  <ion-icon name="star" color="warning"></ion-icon>
+                  <ion-icon name="star-half" color="warning"></ion-icon>
+                </ion-row>
+              </ion-col>
+            </ion-row>
+  
+          </div>
+        </ion-row>
+  
+      </ion-col>
+    </ion-row>
+  
+  </ion-grid>
+
+</ion-content>
