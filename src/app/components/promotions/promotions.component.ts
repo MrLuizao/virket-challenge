@@ -28,7 +28,6 @@ export class PromotionsComponent implements OnInit {
   ngOnInit() {
     this.behaviourSrv.$getArrayItems.subscribe( (items)=>{
       this.slideItems = items;
-      console.log('this.slideItems',this.slideItems);
     });
   }
 

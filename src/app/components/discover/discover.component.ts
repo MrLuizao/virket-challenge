@@ -38,8 +38,11 @@ export class DiscoverComponent implements OnInit {
     this.router.navigateByUrl('detail-product');
   }
 
-  addToCart(paramItem: IProduct){
-    this.store.dispatch( new AddItemAction(paramItem));
+  addToCart(paramItem: any){
+
+    let product = { ...paramItem, color: paramItem.colors[0] }
+
+    this.store.dispatch( new AddItemAction(product));
     this.toastSrv.showToastAlert('Producto agregado correctamente');
   }
 

@@ -11,6 +11,7 @@ export class Product{
     score: number;
     sku: string;
     colors: [Colors];
+    color: {any};
 }
 
 export class Colors{

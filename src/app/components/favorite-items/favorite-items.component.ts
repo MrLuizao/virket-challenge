@@ -32,8 +32,11 @@ export class FavoriteItemsComponent implements OnInit {
     this.router.navigateByUrl('detail-product');
   }
 
-  addItemCart(paramItem: IProduct){
-    this.store.dispatch( new AddItemAction(paramItem));
+  addItemCart(paramItem: any){
+
+    let product = { ...paramItem, color: paramItem.colors[0] }
+
+    this.store.dispatch( new AddItemAction(product));
     this.toastSrv.showToastAlert('Producto agregado correctamente');
   }
 

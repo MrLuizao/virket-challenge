@@ -12,12 +12,13 @@ import { BindBehaviorService } from 'src/app/services/rxjs/bind-behavior.service
 })
 export class DetailProductPage implements OnInit {
 
-  productItem: IProduct;
   isOpen: boolean = false;
+  productItem: IProduct;
 
   constructor(  private behaviourSrv: BindBehaviorService,
                 public toastSrv: ToastService,
-                private store: Store<any> ) { }
+                private store: Store<any>,
+                 ) { }
 
   ngOnInit() {
     this.behaviourSrv.$getDataItem.subscribe( (resp: IProduct) =>{
@@ -30,7 +31,10 @@ export class DetailProductPage implements OnInit {
   }
 
   setProductCart(paramItem : any){
-    this.store.dispatch( new AddItemAction(paramItem));
+    
+    let product = { ...paramItem, color: paramItem.colors[0] }
+
+    this.store.dispatch( new AddItemAction(product));
     this.toastSrv.showToastAlert('Producto agregado correctamente');
   }
 
