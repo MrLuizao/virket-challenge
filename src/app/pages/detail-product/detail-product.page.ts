@@ -35,7 +35,6 @@ export class DetailProductPage implements OnInit {
 
   selectColor( evt: any ){    
     this.radioColor = evt.detail.value;
-    console.log('this.radioColor', this.radioColor);
   }
 
   setProductCart(paramItem : any){
