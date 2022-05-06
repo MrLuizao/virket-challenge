@@ -15,6 +15,7 @@ export class DetailProfilePage implements OnInit {
   detailData: User;
   urlProfile: string;
   emailDetail: string;
+  nameSplit: any;
 
   constructor(  public router: Router, 
                 private store: Store<AppState>) { }
@@ -23,13 +24,16 @@ export class DetailProfilePage implements OnInit {
 
     this.store.select('user').subscribe( (store)=>{
       this.detailData = store['user']
+      
       this.urlProfile = this.detailData['picture'];
       this.emailDetail = this.detailData['email'];
-    });
+
+      let nameDivider = this.detailData.fullName;
+      this.nameSplit = nameDivider.split(' ', 4);
+    }).unsubscribe();
   }
   
   navigateToFavs(){
-    // alert('TEST CLICK ON!!!')
     this.router.navigateByUrl('favorites');
   }
 

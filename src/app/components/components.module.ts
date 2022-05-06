@@ -8,6 +8,7 @@ import { ProfileMenuHeadComponent } from './profile-menu-head/profile-menu-head.
 import { FooterTabsComponent } from './footer-tabs/footer-tabs.component';
 import { FavoriteItemsComponent } from './favorite-items/favorite-items.component';
 import { CartTemsComponent } from './cart-tems/cart-tems.component';
+import { PromotionsComponent } from './promotions/promotions.component';
 
 
 
@@ -18,7 +19,8 @@ import { CartTemsComponent } from './cart-tems/cart-tems.component';
     ProfileMenuHeadComponent,
     FooterTabsComponent,
     CartTemsComponent,
-    FavoriteItemsComponent
+    FavoriteItemsComponent,
+    PromotionsComponent
   ],
   imports: [
     CommonModule, 
@@ -31,7 +33,8 @@ import { CartTemsComponent } from './cart-tems/cart-tems.component';
     ProfileMenuHeadComponent,
     FooterTabsComponent,
     CartTemsComponent,
-    FavoriteItemsComponent
+    FavoriteItemsComponent,
+    PromotionsComponent
   ]
 })
 export class ComponentsModule { }

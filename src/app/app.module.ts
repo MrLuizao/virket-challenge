@@ -12,7 +12,6 @@ import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from 'src/environments/environment';
 import { appReducers } from './redux/app.reducer';
-import { cartReducer } from './redux/product/product.reducer';
 
 
 @NgModule({
