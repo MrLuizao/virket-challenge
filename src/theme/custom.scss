@@ -2,6 +2,12 @@ ion-button{
     --border-radius: 25px;
     width: 100%;
 }
+ion-toolbar{
+    background-color: var(--ion-bgc-page);
+}
+ion-content{
+    --background: var(--ion-bgc-page);
+}
 .pad-1{
     padding: 1em;
 }

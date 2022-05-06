@@ -1,6 +1,6 @@
-ion-content{
-    --background: var(--ion-bgc-page);
-}
+// ion-content{
+//     --background: var(--ion-bgc-page);
+// }
 .contain-btn{
     display: flex;
     bottom: 2em;
@@ -34,4 +34,9 @@ ion-button{
 
 .pad-scrollin{
     padding-bottom: 100%;
+}
+
+.card-text{
+    font-size: 14px;
+    font-weight: bold;
 }

@@ -1,13 +1,17 @@
 
-<ion-content>
-
-  <ion-grid class="pad-scrollin">
-    <ion-row class="top-2">
-      <ion-col>
+<ion-header collapse="fade" >
+  <ion-toolbar mode="md">
+    <ion-row>
+      <ion-col size="12">
         <span class="txt-gray-title ml-1 ">Carrito de compras</span>
       </ion-col>
     </ion-row>
+  </ion-toolbar>
+</ion-header>
 
+<ion-content>
+
+  <ion-grid class="pad-scrollin">
     <app-cart-tems></app-cart-tems>
   </ion-grid>
 
@@ -16,7 +20,7 @@
     <ion-row> 
       <ion-col>
         <ion-text color="tertiary">
-          <span>Información de pago</span>
+          <span class="card-text">Información de pago</span>
         </ion-text>
       </ion-col>
     </ion-row>
@@ -24,23 +28,23 @@
     <ion-row class="underline"> 
       <ion-col>
         <ion-text color="secondary">
-          <span>Subtotal: </span>
+          <span class="card-text">Subtotal: </span>
         </ion-text>
       </ion-col>
       <ion-col class="cost-item">
         <ion-text color="tertiary">
-          <span>$4,800</span>
+          <span class="txt-card-price"> $ {{subTotalAccount | number}}</span>
         </ion-text>
       </ion-col>
     </ion-row>
 
     <ion-row class="underline"> 
       <ion-col>
-        <span>Costo de envio </span>
+        <span class="card-text">Costo de envio </span>
       </ion-col>
       <ion-col class="cost-item">
         <ion-text color="tertiary">
-          <span>$200</span>
+          <span class="txt-card-price">$ {{deliveryCost | number}}</span>
         </ion-text>
       </ion-col>
     </ion-row>
@@ -48,12 +52,12 @@
     <ion-row> 
       <ion-col>
         <ion-text color="tertiary">
-          <span>Total</span>
+          <span class="card-text">Total</span>
         </ion-text>
       </ion-col>
       <ion-col class="cost-item">
         <ion-text color="tertiary">
-          <span>$5, 000</span>
+          <span class="txt-card-price"> $ {{totalAccount | number}}</span>
         </ion-text>
       </ion-col>
     </ion-row>

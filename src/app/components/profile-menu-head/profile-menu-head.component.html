@@ -1,12 +1,16 @@
 
-<ion-row class="top-1">
-  <ion-col size="3" class="flex jf-c" (click)="viewDeatilProfile()">
-    <img [src]="thumbnail" class="profile-thumb">
-  </ion-col>
-  <ion-col size="7" class="flex ai-c">
-    <span>Bienvenido, {{nameShort}}</span>
-  </ion-col>
-  <ion-col size="2" class="flex ai-c jf-c">
-    <ion-icon name="search"></ion-icon>
-  </ion-col>
-</ion-row>
+<ion-header collapse="fade" >
+  <ion-toolbar mode="md">
+    <ion-row class="top-1">
+      <ion-col size="3" class="flex jf-c" (click)="viewDeatilProfile()">
+        <img [src]="thumbnail" class="profile-thumb">
+      </ion-col>
+      <ion-col size="7" class="flex ai-c">
+        <span>Bienvenido, {{nameShort}}</span>
+      </ion-col>
+      <ion-col size="2" class="flex ai-c jf-c">
+        <ion-icon name="search"></ion-icon>
+      </ion-col>
+    </ion-row>
+  </ion-toolbar>
+</ion-header>
