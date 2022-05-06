@@ -3,6 +3,10 @@ ion-content{
     --background: var(--ion-bgc-page);
 }
 
+ion-radio{
+    margin-right: 5px;
+}
+
 .contain-product{
     display: flex;
     flex-direction: column;
@@ -87,4 +91,8 @@ ion-footer{
 
 ion-button{
     width: 90%;
+}
+
+.red{
+    color: red !important;
 }

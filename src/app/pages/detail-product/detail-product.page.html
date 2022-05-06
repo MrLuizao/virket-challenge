@@ -41,15 +41,18 @@
     </ion-row>
   </ion-grid>
 
-  <ion-grid class="card-contain pad-1" [class.opennig]="isOpen" [class.closing]="!isOpen" (click)="tapToMoveCard()">
-
+  <ion-grid class="card-contain pad-1" [class.opennig]="isOpen" [class.closing]="!isOpen">
     <ion-row> 
-      <ion-col size="6" class="txt-label">Colores</ion-col>
+      <ion-col size="4" class="txt-label">Colores</ion-col>
+      <ion-col size="8" (click)="tapToMoveCard()"></ion-col>
     </ion-row>
     <ion-row>
-      <ion-col size="6" >
-        <ion-icon name="ellipse" *ngFor="let item of productItem.colors"></ion-icon>
+      <ion-col size="6">        
+        <ion-radio-group  mode="md" (ionChange)="selectColor($event)">
+          <ion-radio [value]="item" class="red" *ngFor="let item of productItem.colors"></ion-radio>
+        </ion-radio-group>
       </ion-col>
+      <ion-col size="6" (click)="tapToMoveCard()"></ion-col>
     </ion-row>
 
     <ion-row>
