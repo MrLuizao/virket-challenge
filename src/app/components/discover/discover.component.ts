@@ -17,6 +17,7 @@ import { BindBehaviorService } from 'src/app/services/rxjs/bind-behavior.service
 export class DiscoverComponent implements OnInit {
 
   productsData: IProduct | any;
+  optionsCard: boolean;
 
   constructor(  public router: Router, 
                 private productsSrv: ApiProductsService,
@@ -40,6 +41,10 @@ export class DiscoverComponent implements OnInit {
   addToCart(paramItem: IProduct){
     this.store.dispatch( new AddItemAction(paramItem));
     this.toastSrv.showToastAlert('Producto agregado correctamente');
+  }
+
+  moreActions(index){    
+    this.productsData[index].open = !this.productsData[index].open;
   }
 
 }

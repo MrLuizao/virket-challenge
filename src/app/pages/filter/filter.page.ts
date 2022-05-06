@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { IProduct } from 'src/app/interfaces/product.interface';
 import { BindBehaviorService } from 'src/app/services/rxjs/bind-behavior.service';
 
 @Component({
@@ -17,7 +19,8 @@ export class FilterPage implements OnInit {
   brands = [];
   filterData = [];
 
-  constructor( private behaviourSrv: BindBehaviorService ) { }
+  constructor(  public router: Router, 
+                private behaviourSrv: BindBehaviorService ) { }
 
   ngOnInit() {
 
@@ -39,4 +42,9 @@ export class FilterPage implements OnInit {
     this.filterData = this.products.filter( (element)=> element.brand === argument);
   }
 
+  goDetailItem(itemParam: IProduct){    
+    this.behaviourSrv.setDataItem(itemParam);
+    this.router.navigateByUrl('detail-product');
+  }
+  
 }

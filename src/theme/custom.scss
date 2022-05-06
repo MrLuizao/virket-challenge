@@ -23,6 +23,10 @@ ion-content{
 .ml-1{
     margin-left: 1em;
 }
+.item-end{
+    display: flex;
+    justify-content: flex-end;
+}
 #logo-img{
     width: 10em;
 }

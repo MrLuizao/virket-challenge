@@ -1,12 +1,13 @@
 
 <ion-grid class="pad-1">
+
   <ion-col>
     <span class="txt-gray-title ml-1">Descubre</span>
   </ion-col>
 
   <ion-row>
-    <ion-col size="6" class="pad-1" *ngFor="let item of productsData">        
-      <ion-row >
+    <ion-col size="6" class="pad-1" *ngFor="let item of productsData; let i = index">        
+      <ion-row *ngIf="!item.open">
         <div class="card-item">
 
           <ion-row class="head-row mb-1">
@@ -38,7 +39,7 @@
                 <ion-icon name="star-half" color="warning"></ion-icon>
               </ion-row>
             </ion-col>
-            <ion-col size="5" class="btn-add" (click)="addToCart(item)">
+            <ion-col size="5" class="btn-add" (click)="moreActions(i)">
               <ion-icon name="add-outline"></ion-icon>
             </ion-col>
           </ion-row>
@@ -46,6 +47,27 @@
         </div>
       </ion-row>
 
+      <section *ngIf="item.open">
+        <div class="options-card">
+
+          <ion-row class="top-option-btn" (click)="moreActions(i)">
+            <ion-col size="12" class="item-end">
+              <svg width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="12.5" cy="12.5" r="12.5" fill="#C9C7C7" fill-opacity="0.2"/>
+                <path d="M6.7625 8L12.5 13.7375L18.2375 8L20 9.775L12.5 17.275L5 9.775L6.7625 8Z" fill="#BDBCBC"/>
+              </svg>
+            </ion-col>
+            <ion-col size="12" class="flex jf-c">
+              <p>Agregar a favoritos</p>             
+            </ion-col>
+          </ion-row>
+
+          <ion-row class="bottom-opt-btn" (click)="addToCart(item)">
+            <span>Agregar al carrito</span>
+          </ion-row>
+
+        </div>
+      </section>
     </ion-col>
   </ion-row>
 
