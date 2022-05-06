@@ -1,4 +1,4 @@
-<ion-header style="background-color: #fff;">
+<ion-header>
   <ion-toolbar>
     <ion-buttons slot="start" mode="ios">
       <ion-back-button defaultHref="/" color="tertiary"></ion-back-button>
@@ -10,71 +10,6 @@
 
 <ion-content>
 
-  <ion-row class="top-2">
-    <ion-col size="6" class="pad-1" *ngFor="let item of favorites; let i = index">        
-      <ion-row *ngIf="!item.open">
-        <div class="card-item">
-
-          <ion-row class="head-row mb-1">
-            <ion-col size="9">
-              <ion-row>
-                <span class="txt-card-sub">{{item.brand}}</span>
-              </ion-row>
-              <ion-row>
-                <span class="txt-card-title">{{item.product_name}}</span>  
-              </ion-row>
-            </ion-col>
-            <ion-col size="3">
-              <ion-icon name="heart-outline" class="iconSize" *ngIf="!item.is_favorite"></ion-icon>
-              <ion-icon name="heart" class="iconSize fill" *ngIf="item.is_favorite"></ion-icon>
-            </ion-col>
-          </ion-row>
-
-          <ion-row class="mb-1 jf-c" (click)="goDetailItem(item)">
-            <img [src]="item.product_image" style="max-height: 8em;">
-          </ion-row>
-
-          <ion-row >
-            <ion-col size="7">
-              <ion-row>
-                <span class="txt-card-price"> $ {{item.product_price}}</span>
-              </ion-row>
-              <ion-row style="padding-left: 0.5em;">
-                <ion-icon name="star" color="warning"></ion-icon>
-                <ion-icon name="star-half" color="warning"></ion-icon>
-              </ion-row>
-            </ion-col>
-            <ion-col size="5" class="btn-add" (click)="buttonMore(i)">
-              <ion-icon name="add-outline"></ion-icon>
-            </ion-col>
-          </ion-row>
-
-        </div>
-      </ion-row>
-
-      <section *ngIf="item.open">
-        <div class="options-card">
-
-          <ion-row class="top-option-btn" (click)="buttonMore(i)">
-            <ion-col size="12" class="item-end">
-              <svg width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="12.5" cy="12.5" r="12.5" fill="#C9C7C7" fill-opacity="0.2"/>
-                <path d="M6.7625 8L12.5 13.7375L18.2375 8L20 9.775L12.5 17.275L5 9.775L6.7625 8Z" fill="#BDBCBC"/>
-              </svg>
-            </ion-col>
-            <ion-col size="12" class="flex jf-c">
-              <p>Agregar a favoritos</p>             
-            </ion-col>
-          </ion-row>
-
-          <ion-row class="bottom-opt-btn" (click)="addItemCart(item)">
-            <span>Agregar al carrito</span>
-          </ion-row>
-
-        </div>
-      </section>
-    </ion-col>
-  </ion-row>
-
-
+  <app-favorite-items></app-favorite-items>
+  
 </ion-content>

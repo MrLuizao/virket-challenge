@@ -15,7 +15,7 @@
     <ion-col size="4">
       <span> $ {{item.product_price}}</span>
     </ion-col>
-    <ion-col size="1">
+    <ion-col size="1" (click)="discardProductCart(item.id)">
       <ion-icon name="remove-circle-outline" color="secondary"></ion-icon>    
     </ion-col>
   </ion-row>
