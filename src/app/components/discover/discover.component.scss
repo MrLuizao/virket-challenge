@@ -1,3 +1,11 @@
+ion-grid{
+    margin-left: 10px;
+    margin-right: 10px;
+    padding: 0;
+}
+ion-col{
+    padding: 0;
+}
 
 .opennig {
     transform: translate(0, 10);
@@ -6,5 +14,10 @@
 .closing {
     transform: translate(0, 25em);
     transition: all 0.5s ease;
+}
+
+img{
+    max-height: 90px;
+    transform: rotate(20deg);
 }
 

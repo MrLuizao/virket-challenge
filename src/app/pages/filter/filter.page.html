@@ -33,20 +33,20 @@
     </ion-row>
   </ion-grid>
   
-  <ion-grid class="pad-1">
+  <ion-grid style="margin-top: 44px;">
 
     <ion-row>
-      <ion-col size="6" class="pad-1" *ngFor="let item of filterData">        
+      <ion-col size="6" *ngFor="let item of filterData;">        
         <ion-row >
-          <div class="card-item">
+          <div class="card-item m-10">
   
-            <ion-row class="head-row mb-1">
+            <ion-row class="head-row">
               <ion-col size="9">
                 <ion-row>
                   <span class="txt-card-sub">{{item.brand}}</span>
                 </ion-row>
                 <ion-row>
-                  <span class="txt-card-title">{{item.product_name}}</span>  
+                  <span class="txt-card-title">{{item.product_name | slice:0:16}}</span>  
                 </ion-row>
               </ion-col>
               <ion-col size="3">
@@ -55,20 +55,21 @@
               </ion-col>
             </ion-row>
   
-            <ion-row class="mb-1 jf-c" (click)="goDetailItem(item)">
-              <img [src]="item.product_image" style="max-height: 8em;">
+            <ion-row class="jf-c" (click)="goDetailItem(item)">
+              <img [src]="item.product_image">
             </ion-row>
   
-            <ion-row>
-              <ion-col>
+            <ion-row class="height-row">
+              <ion-col size="8" class="col-down-align">
                 <ion-row>
                   <span class="txt-card-price"> $ {{item.product_price}}</span>
                 </ion-row>
-                <ion-row style="padding-left: 0.5em;">
+                <ion-row style="margin-left: 15px;">
                   <ion-icon name="star" color="warning"></ion-icon>
                   <ion-icon name="star-half" color="warning"></ion-icon>
                 </ion-row>
               </ion-col>
+
             </ion-row>
   
           </div>

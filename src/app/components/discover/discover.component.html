@@ -1,22 +1,22 @@
 
-<ion-grid class="pad-1">
+<ion-grid>
 
   <ion-col>
     <span class="txt-gray-title ml-1">Descubre</span>
   </ion-col>
 
   <ion-row>
-    <ion-col size="6" class="pad-1" *ngFor="let item of productsData; let i = index">        
+    <ion-col size="6" *ngFor="let item of productsData; let i = index">        
       <ion-row *ngIf="!item.open">
-        <div class="card-item">
+        <div class="card-item m-10">
 
-          <ion-row class="head-row mb-1">
+          <ion-row class="head-row">
             <ion-col size="9">
               <ion-row>
                 <span class="txt-card-sub">{{item.brand}}</span>
               </ion-row>
               <ion-row>
-                <span class="txt-card-title">{{item.product_name}}</span>  
+                <span class="txt-card-title">{{item.product_name | slice:0:16}}</span>  
               </ion-row>
             </ion-col>
             <ion-col size="3">
@@ -25,21 +25,21 @@
             </ion-col>
           </ion-row>
 
-          <ion-row class="mb-1 jf-c" (click)="viewDetailPage(item)">
-            <img [src]="item.product_image" style="max-height: 8em;">
+          <ion-row class="jf-c" (click)="viewDetailPage(item)">
+            <img [src]="item.product_image">
           </ion-row>
 
-          <ion-row >
-            <ion-col size="7">
+          <ion-row class="height-row">
+            <ion-col size="8" class="col-down-align">
               <ion-row>
                 <span class="txt-card-price"> $ {{item.product_price}}</span>
               </ion-row>
-              <ion-row style="padding-left: 0.5em;">
+              <ion-row style="margin-left: 15px;">
                 <ion-icon name="star" color="warning"></ion-icon>
                 <ion-icon name="star-half" color="warning"></ion-icon>
               </ion-row>
             </ion-col>
-            <ion-col size="5" class="btn-add" (click)="moreActions(i)">
+            <ion-col size="4" class="btn-add" (click)="moreActions(i)">
               <ion-icon name="add-outline"></ion-icon>
             </ion-col>
           </ion-row>
@@ -47,11 +47,11 @@
         </div>
       </ion-row>
 
-      <section *ngIf="item.open">
-        <div class="options-card">
+      <ion-row *ngIf="item.open" class="h-100">
+        <div class="options-card m-10">
 
           <ion-row class="top-option-btn" (click)="moreActions(i)">
-            <ion-col size="12" class="item-end">
+            <ion-col size="12" class="item-end" style="margin-right: 15px;">
               <svg width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <circle cx="12.5" cy="12.5" r="12.5" fill="#C9C7C7" fill-opacity="0.2"/>
                 <path d="M6.7625 8L12.5 13.7375L18.2375 8L20 9.775L12.5 17.275L5 9.775L6.7625 8Z" fill="#BDBCBC"/>
@@ -67,7 +67,8 @@
           </ion-row>
 
         </div>
-      </section>
+      </ion-row>
+
     </ion-col>
   </ion-row>
 

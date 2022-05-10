@@ -19,6 +19,8 @@ export class DiscoverComponent implements OnInit {
   productsData: IProduct | any;
   optionsCard: boolean;
 
+  nameSplit: string;
+
   constructor(  public router: Router, 
                 private productsSrv: ApiProductsService,
                 private store: Store<any>,
@@ -30,6 +32,7 @@ export class DiscoverComponent implements OnInit {
     this.productsSrv.getAllProducts().subscribe( (resp: IProduct)=>{
       this.productsData = resp['data'];
       this.behaviourSrv.setAllProducts(this.productsData);
+
     });
   }
 
