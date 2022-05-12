@@ -18,7 +18,3 @@ export class Colors{
     hex: string;
     name: string;
 }
-
-export class AllProducts {
-    products: [Product]
-}

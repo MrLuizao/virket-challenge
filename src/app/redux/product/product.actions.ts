@@ -1,11 +1,16 @@
 import { Action, createAction, props } from '@ngrx/store';
-import { IProduct } from 'src/app/interfaces/product.interface';
 import { Product } from '../models/product.model';
 
 
 export enum CartActionTypes {
+    STORE_ITEMS = '[CART] Store Items',
     ADD_ITEM = '[CART] Add Item',
     DELETE_ITEM = '[CART] Delete Item'
+}
+
+export class SetAllItemsAction implements Action {
+    readonly type = CartActionTypes.STORE_ITEMS;
+    constructor ( public payload: Product){}
 }
 
 export class AddItemAction implements Action {
@@ -18,4 +23,4 @@ export class DeleteItemAction implements Action {
     constructor ( public payload: Product){}
 }
 
-export type CartAction = AddItemAction | DeleteItemAction;
+export type CartAction = SetAllItemsAction | AddItemAction | DeleteItemAction;

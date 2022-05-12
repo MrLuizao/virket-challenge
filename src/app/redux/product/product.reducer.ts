@@ -9,6 +9,9 @@ const initialState: Array<Product> = []
 export function cartReducer( state: Array<any> = initialState, action: CartAction){
     switch( action.type ){
 
+        case CartActionTypes.STORE_ITEMS:
+            return [action.payload];
+
         case CartActionTypes.ADD_ITEM:
             return [ ...state, action.payload];
 

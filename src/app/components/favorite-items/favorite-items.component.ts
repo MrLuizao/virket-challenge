@@ -14,6 +14,8 @@ import { BindBehaviorService } from 'src/app/services/rxjs/bind-behavior.service
 export class FavoriteItemsComponent implements OnInit {
 
   favorites = [];
+  storeItems$: any;
+
 
   constructor(  private behaviourSrv: BindBehaviorService,
                 private store: Store<any>,
@@ -21,9 +23,9 @@ export class FavoriteItemsComponent implements OnInit {
                 public toastSrv: ToastService ) { }
 
   ngOnInit() {
-    this.behaviourSrv.$getArrayItems.subscribe( (items)=>{
-      this.favorites = items.filter( element => element.is_favorite );
-      console.log(this.favorites);
+    this.storeItems$ = this.store.select(store => store.cart);
+    this.storeItems$.subscribe( (data)=>{
+      this.favorites = data[0].filter( element => element.is_favorite );
     });
   }
 

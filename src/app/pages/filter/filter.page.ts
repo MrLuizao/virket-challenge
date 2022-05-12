@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Store } from '@ngrx/store';
 import { IProduct } from 'src/app/interfaces/product.interface';
 import { BindBehaviorService } from 'src/app/services/rxjs/bind-behavior.service';
 
@@ -19,13 +20,17 @@ export class FilterPage implements OnInit {
   brands = [];
   filterData = [];
 
+  storeItems$: any;
+
   constructor(  public router: Router, 
+                private store: Store<any>,
                 private behaviourSrv: BindBehaviorService ) { }
 
   ngOnInit() {
 
-    this.behaviourSrv.$getArrayItems.subscribe( (items)=>{
-      this.products = items;
+    this.storeItems$ = this.store.select(store => store.cart);
+    this.storeItems$.subscribe( (data)=>{
+      this.products = data[0];
       this.filterData = this.products;
 
       const brandsMap = this.products.map( element => element.brand );
