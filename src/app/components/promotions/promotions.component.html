@@ -4,7 +4,7 @@
     <span class="txt-gray-title ml-1">Ofertas del día</span>
   </ion-col>
 
-  <ion-row class="top-1">
+  <ion-row class="top-15">
     <ion-slides [options]="slideOpts">
 
       <ion-slide *ngFor="let item of slideItems">
@@ -19,7 +19,7 @@
           </ion-row>
 
           <ion-row class="mb-1 jf-c" (click)="goDetailPage(item)">
-            <img [src]="item.product_image" style="max-height: 8em;">
+            <img [src]="item.product_image" >
           </ion-row>
 
           <ion-row>

@@ -19,7 +19,7 @@ export class PromotionsComponent implements OnInit {
     speed: 400,
     loop: true,
     centeredSlides: true
-}
+  }
 
   constructor(  private behaviourSrv: BindBehaviorService,
                 public router: Router, 

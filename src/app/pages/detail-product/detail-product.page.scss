@@ -1,3 +1,6 @@
+ion-toolbar{
+    --background: transparent;
+}
 
 ion-content{
     --background: var(--ion-bgc-page);
@@ -21,6 +24,8 @@ ion-radio{
 
 .product-img{
     width: 40%;
+    transform: rotate(25deg);
+
 }
 
 .txt-title-product{

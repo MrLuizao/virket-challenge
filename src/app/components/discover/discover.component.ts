@@ -17,8 +17,8 @@ import { BindBehaviorService } from 'src/app/services/rxjs/bind-behavior.service
 export class DiscoverComponent implements OnInit {
 
   productsData: IProduct | any;
-  optionsCard: boolean;
 
+  optionsCard: boolean;
   nameSplit: string;
 
   constructor(  public router: Router, 
@@ -33,6 +33,7 @@ export class DiscoverComponent implements OnInit {
       this.productsData = resp['data'];
       this.behaviourSrv.setAllProducts(this.productsData);
 
+      // this.store.dispatch( new SetAllItemsAction(this.productsData));
     });
   }
 
