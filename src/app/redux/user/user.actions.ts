@@ -11,7 +11,9 @@ import { createAction, props } from '@ngrx/store';
 
 export const enum UserActions {
     setUser = '[USER] set user',
-    addUser = '[USER] add user' // ! Este es un ejemplo de mas acciones
+    addUser = '[USER] add user', // ! Este es un ejemplo de mas acciones
+    getUser = '[USER] get user',
+    setError = '[USER] set error in user module',
 }
 
 export const setUserAction = createAction(
@@ -24,3 +26,11 @@ export const addUserAction = createAction(// ! this is an example
     props<{ name: string; lastname: string }>()
 );
 
+export const getUserAction = createAction(// ! this is an example
+    UserActions.getUser,
+);
+
+export const setErrorAction = createAction(// ! this is an example
+    UserActions.setError,
+    props<{ error: any }>()
+);
