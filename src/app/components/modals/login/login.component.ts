@@ -5,7 +5,7 @@ import { User } from 'src/app/redux/models/user.model';
 import { ApiDataService } from 'src/app/services/api-data.service';
 import { Store } from '@ngrx/store';
 import { AppState } from 'src/app/redux/app.reducer';
-import { setUser } from 'src/app/redux/user/user.actions';
+// import { setUser } from 'src/app/redux/user/user.actions';
 
 @Component({
   selector: 'app-login',
@@ -46,7 +46,7 @@ export class LoginComponent implements OnInit {
       picture: this.userObject['picture']['medium'],
       guest: false
     } 
-    this.store.dispatch( setUser({ user: UPDATE_USER}) );
+   // this.store.dispatch( setUser({ user: UPDATE_USER}) );
     this.modalController.dismiss();
     // this.router.navigateByUrl('dashboard');
   }

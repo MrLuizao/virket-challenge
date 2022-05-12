@@ -1,28 +1,39 @@
 import { createReducer, on } from '@ngrx/store';
-import { User } from "../models/user.model";
-import { setUser } from "./user.actions";
 
+import { User } from '../models/user.model';
+import * as userActions from './user.actions';
+
+/* export const enum StateMachine {// ! Este es opcional, si lo quieres manejar como maquina de estados
+    idle = 'idle',
+    loading = 'loading'
+    // ....
+} */
 export interface State {
+    // control
+    isLoading: boolean;
+    isSuccess: boolean;
+    hasError: boolean;
+    // Data
     user: User;
+    username: string;// !demostrativo
+    // password: string;// !demostrativo
 }
 
 export const initialState: State = {
-    user: {
-        fullName: '',
-        email: '',
-        titleText: 'Bienvenido',
-        picture: 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png',
-        guest: null
-    } 
-}
+    isLoading: false,
+    isSuccess: false,
+    hasError: false,
+    user: null,
+    username: null,
+};
 
-const _setUserReducer = createReducer( initialState,
-    on( setUser, (state, {user}) => ({
-        ...state, 
-        user: {...user} 
-    })),
-)
+export const featureKey = 'user';
 
-export function setUserReducer(state: any, action: any) {
-    return _setUserReducer(state, action);
-}
+export const reducer = createReducer(
+    initialState,
+    on(userActions.setUserAction,// Este es como el case de un switch
+        (state, action) => ({ ...state, username: action.username })),
+);
+
+// exportar ese reducer
+export const userReducer = (state: any, action: any) => reducer(state, action);

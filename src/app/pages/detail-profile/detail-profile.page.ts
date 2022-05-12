@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { AppState } from 'src/app/redux/app.reducer';
 import { User } from 'src/app/redux/models/user.model';
-import { setUser } from 'src/app/redux/user/user.actions';
+// import { setUser } from 'src/app/redux/user/user.actions';
 
 @Component({
   selector: 'app-detail-profile',
@@ -46,7 +46,7 @@ export class DetailProfilePage implements OnInit {
       guest: true
     }
 
-    this.store.dispatch( setUser({ user: RESET_USER}) );
+   // this.store.dispatch( setUser({ user: RESET_USER}) );
     this.router.navigateByUrl('home');
   }
 

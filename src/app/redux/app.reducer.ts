@@ -10,7 +10,7 @@ export interface AppState {
 }
 
 export const appReducers: ActionReducerMap<AppState> = {
-    user: useReducer.setUserReducer,
+    user: useReducer.userReducer,
     product: productReducer,
     cart: cartReducer
 }
