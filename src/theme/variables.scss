@@ -2,6 +2,14 @@
 // http://ionicframework.com/docs/theming/
 
 /** Ionic CSS Variables **/
+
+@font-face {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: normal;
+  src: url('../assets/fonts/Poppins-Regular.ttf');
+}
+
 :root {
 
   --ion-text-gray: #4F4E4E;

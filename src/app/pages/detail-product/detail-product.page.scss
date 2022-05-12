@@ -25,7 +25,6 @@ ion-radio{
 .product-img{
     width: 40%;
     transform: rotate(25deg);
-
 }
 
 .txt-title-product{
@@ -47,17 +46,16 @@ ion-radio{
     bottom: 0;
     overflow: scroll;
     position: fixed;
-    top: 10em;
+    top: 40%;
     width: 100%;
     color: var(--ion-color-secondary);
 }
 
 .opennig {
-    transform: translate(0, 10);
     transition: all 0.5s ease;
 }
 .closing {
-    transform: translate(0, 25em);
+    transform: translate(0, 40%);
     transition: all 0.5s ease;
 }
 .price-item{
