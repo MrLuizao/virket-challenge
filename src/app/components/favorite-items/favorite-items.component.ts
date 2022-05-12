@@ -23,7 +23,7 @@ export class FavoriteItemsComponent implements OnInit {
                 public toastSrv: ToastService ) { }
 
   ngOnInit() {
-    this.storeItems$ = this.store.select(store => store.cart);
+    this.storeItems$ = this.store.select(store => store.product);
     this.storeItems$.subscribe( (data)=>{
       this.favorites = data[0].filter( element => element.is_favorite );
     });

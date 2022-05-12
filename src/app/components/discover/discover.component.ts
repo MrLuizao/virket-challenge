@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { ToastController } from '@ionic/angular';
 import { Store } from '@ngrx/store';
 import { IProduct } from 'src/app/interfaces/product.interface';
+import { AddCartItem } from 'src/app/redux/cart/cart.actions';
 import { Product } from 'src/app/redux/models/product.model';
 import { AddItemAction, SetAllItemsAction } from 'src/app/redux/product/product.actions';
 import { ToastService } from 'src/app/services/alerts/toast.service';
@@ -18,6 +19,7 @@ export class DiscoverComponent implements OnInit {
 
   productsData: IProduct | any;
   optionsCard: boolean;
+
   nameSplit: string;
 
   constructor(  public router: Router, 
@@ -30,7 +32,12 @@ export class DiscoverComponent implements OnInit {
   ngOnInit() {
     this.productsSrv.getAllProducts().subscribe( (resp: Product)=>{
       this.productsData = resp['data'];
-      this.store.dispatch( new SetAllItemsAction(this.productsData));
+      
+      this.productsData.forEach( (element)=>{
+        let objectWithProperty = { ...element, open: false }
+        this.store.dispatch( new SetAllItemsAction(objectWithProperty))
+      });
+      
     });
   }
 

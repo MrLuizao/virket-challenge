@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, DebugElement, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { IProduct } from 'src/app/interfaces/product.interface';
+import { AddCartItem } from 'src/app/redux/cart/cart.actions';
 import { AddItemAction } from 'src/app/redux/product/product.actions';
 import { ToastService } from 'src/app/services/alerts/toast.service';
 import { BindBehaviorService } from 'src/app/services/rxjs/bind-behavior.service';
@@ -43,10 +44,14 @@ export class DetailProductPage implements OnInit {
       this.toastSrv.showToastAlert('Selecciona un color!');
       return
     }
+
+    debugger
     
     let product = { ...paramItem, color: this.radioColor }
 
-    this.store.dispatch( new AddItemAction(product));
+    this.store.dispatch( new AddCartItem(product));
+
+    // this.store.dispatch( new AddItemAction(product));
     this.toastSrv.showToastAlert('Producto agregado correctamente');
   }
 

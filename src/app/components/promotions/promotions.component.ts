@@ -29,9 +29,10 @@ export class PromotionsComponent implements OnInit {
                 public toastSrv: ToastService ) { }
 
   ngOnInit() {
-    this.storeItems$ = this.store.select(store => store.cart);
+    this.storeItems$ = this.store.select(store => store.product);
     this.storeItems$.subscribe( (data)=>{
-      this.slideItems = data[0];
+      this.slideItems = data;
+      console.log('this.slideItems',this.slideItems);
     });
   }
 

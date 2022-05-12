@@ -1,8 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { DeleteItemAction } from 'src/app/redux/product/product.actions';
+import { SetCartItems } from 'src/app/redux/cart/cart.actions';
+import { Product } from 'src/app/redux/models/product.model';
+import { AddItemAction, DeleteItemAction } from 'src/app/redux/product/product.actions';
 import { ToastService } from 'src/app/services/alerts/toast.service';
+import { ApiCartItemsService } from 'src/app/services/api-cart-items.service';
 
 @Component({
   selector: 'app-cart-tems',
@@ -12,19 +15,32 @@ import { ToastService } from 'src/app/services/alerts/toast.service';
 export class CartTemsComponent implements OnInit {
 
   itemsCart$: Observable<any>
-  cartProducts = [];
+  cartProducts: any;
 
   constructor(  private store: Store<any>,
                 public toastSrv: ToastService,
+                private cartItemSrv: ApiCartItemsService
                 ) { }
 
   ngOnInit() {
 
-    this.itemsCart$ = this.store.select(store => store.cart);
-    this.itemsCart$.subscribe( (data)=>{
-      this.cartProducts = data;
-    });
+    // this.itemsCart$ = this.store.select(store => store.product);
+    // this.itemsCart$.subscribe( (data)=>{
+    //   this.cartProducts = data[0];
+    // });
 
+
+    this.cartItemSrv.getCartProducts().subscribe( (resp: Product)=>{
+      this.cartProducts = resp['data'].products;
+      console.log('this.cartProducts',this.cartProducts);
+      
+      this.store.dispatch( new SetCartItems(this.cartProducts));
+
+      // this.cartProducts.forEach( (item)=>{
+      //   this.store.dispatch( new AddItemAction(item));
+      // });
+
+    });
   }
 
   discardProductCart(paramItem : any){

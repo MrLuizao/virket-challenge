@@ -28,9 +28,9 @@ export class FilterPage implements OnInit {
 
   ngOnInit() {
 
-    this.storeItems$ = this.store.select(store => store.cart);
+    this.storeItems$ = this.store.select(store => store.product);
     this.storeItems$.subscribe( (data)=>{
-      this.products = data[0];
+      this.products = data;
       this.filterData = this.products;
 
       const brandsMap = this.products.map( element => element.brand );

@@ -23,13 +23,25 @@ ion-button{
     border-bottom-width: 1px;
 }
 
-.opennig {
-    transform: translate(0, 10);
+.opened-card {
+    // transform: translate(0, 10);
     transition: all 0.5s ease;
 }
-.closing {
-    transform: translate(0, 25em);
+.closed-card {
+    transform: translate(0, 100%);
     transition: all 0.5s ease;
+}
+
+.card-resize{
+    background: #FFFFFF;
+    border-radius: 16px 16px 0px 0px;
+    bottom: 0;
+    overflow: scroll;
+    position: fixed;
+    top: 50%;
+    width: 100%;
+    color: var(--ion-color-secondary);
+    box-shadow: 0px -5px 10px rgb(0 0 0 / 10%);
 }
 
 .pad-scrollin{
@@ -39,4 +51,11 @@ ion-button{
 .card-text{
     font-size: 14px;
     font-weight: bold;
+}
+
+.hidden-btn{
+    bottom: 13%;
+    margin-left: 70px;
+    position: fixed;
+    width: 100%;
 }
