@@ -44,14 +44,10 @@ export class DetailProductPage implements OnInit {
       this.toastSrv.showToastAlert('Selecciona un color!');
       return
     }
-
-    debugger
     
     let product = { ...paramItem, color: this.radioColor }
 
     this.store.dispatch( new AddCartItem(product));
-
-    // this.store.dispatch( new AddItemAction(product));
     this.toastSrv.showToastAlert('Producto agregado correctamente');
   }
 

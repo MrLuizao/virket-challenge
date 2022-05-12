@@ -12,6 +12,9 @@ export function cartReducer( state: Array<any> = initialState, action: CartActio
         case CartActionTypes.ADD_CART_ITEM:
             return [ ...state, action.payload];
 
+        case CartActionTypes.REMOVE_CART_ITEM:
+            return state.filter( item => item.id !== action.payload )        
+    
         default:
             return state;
     }
