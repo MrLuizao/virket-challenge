@@ -2,7 +2,7 @@ import { Component, DebugElement, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { IProduct } from 'src/app/interfaces/product.interface';
 import { AddCartItem } from 'src/app/redux/cart/cart.actions';
-import { AddItemAction } from 'src/app/redux/product/product.actions';
+// import { AddItemAction } from 'src/app/redux/product/product.actions';
 import { ToastService } from 'src/app/services/alerts/toast.service';
 import { BindBehaviorService } from 'src/app/services/rxjs/bind-behavior.service';
 

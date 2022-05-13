@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { RemoveCartItem } from 'src/app/redux/cart/cart.actions';
-import { DeleteItemAction } from 'src/app/redux/product/product.actions';
+// import { DeleteItemAction } from 'src/app/redux/product/product.actions';
 import { ToastService } from 'src/app/services/alerts/toast.service';
 import { ApiCartItemsService } from 'src/app/services/api-cart-items.service';
 

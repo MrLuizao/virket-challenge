@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { IProduct } from 'src/app/interfaces/product.interface';
-import { AddItemAction } from 'src/app/redux/product/product.actions';
+// import { AddItemAction } from 'src/app/redux/product/product.actions';
 import { ToastService } from 'src/app/services/alerts/toast.service';
 import { BindBehaviorService } from 'src/app/services/rxjs/bind-behavior.service';
 
@@ -38,7 +38,7 @@ export class FavoriteItemsComponent implements OnInit {
 
     let product = { ...paramItem, color: paramItem.colors[0] }
 
-    this.store.dispatch( new AddItemAction(product));
+    // this.store.dispatch( new AddItemAction(product));
     this.toastSrv.showToastAlert('Producto agregado correctamente');
   }
 

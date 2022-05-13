@@ -5,7 +5,7 @@ import { Store } from '@ngrx/store';
 import { IProduct } from 'src/app/interfaces/product.interface';
 import { AddCartItem } from 'src/app/redux/cart/cart.actions';
 import { Product } from 'src/app/redux/models/product.model';
-import { SetAllItemsAction } from 'src/app/redux/product/product.actions';
+// import { SetAllItemsAction } from 'src/app/redux/product/product.actions';
 import { ToastService } from 'src/app/services/alerts/toast.service';
 import { ApiProductsService } from 'src/app/services/api-products.service';
 import { BindBehaviorService } from 'src/app/services/rxjs/bind-behavior.service';
@@ -35,7 +35,7 @@ export class DiscoverComponent implements OnInit {
       
       this.productsData.forEach( (element)=>{
         let objectWithProperty = { ...element, open: false }
-        this.store.dispatch( new SetAllItemsAction(objectWithProperty))
+        // this.store.dispatch( new SetAllItemsAction(objectWithProperty))
       });
       
     });
