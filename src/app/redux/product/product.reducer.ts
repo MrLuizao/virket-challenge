@@ -47,9 +47,15 @@ export const featureKey = 'product';
 
 export const reducer = createReducer(
     initialState,
+    on(productActions.getProductAction,
+        (state, action) => ({ ...state, hasError: false, isLoading: true })),
+
     on(productActions.setProductAction,
         (state, action) => ({ ...state, hasError: false, isLoading: false })),
 
+    on(productActions.setErrorAction,
+        (state, action) => ({ ...state, hasError: true, isLoading: false }))
+    
 );
 
 export const productReducer = (state: any, action: any) => reducer(state, action);

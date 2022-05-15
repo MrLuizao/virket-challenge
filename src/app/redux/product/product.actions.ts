@@ -30,6 +30,7 @@ import { createAction, props } from "@ngrx/store";
 
 export const enum ProductActions {
     setAllProducts = '[PRODUCT] set all products',
+    getAllProducts = '[PRODUCT] set all products',
     setProduct = '[PRODUCT] add one product', 
     getProduct = '[PRODUCT] get one product',
     setError = '[PRODUCT] set error in product module',
@@ -37,4 +38,13 @@ export const enum ProductActions {
 
 export const setProductAction = createAction(
     ProductActions.setAllProducts
+);
+
+export const getProductAction = createAction(// ! this is an example
+    ProductActions.getAllProducts
+);
+
+export const setErrorAction = createAction(
+    ProductActions.setError,
+    props<{ error: any }>()
 );
