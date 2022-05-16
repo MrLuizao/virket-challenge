@@ -8,4 +8,7 @@ export const isLoadingSelector = createSelector(
     productState, ({ isLoading }) => isLoading
 );
 
+export const productsSelector = createSelector(
+    productState, ({ products }) => products
+);
 export const hasErrorSelector = createSelector(productState, ({ hasError }) => hasError);

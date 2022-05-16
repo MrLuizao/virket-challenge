@@ -2,6 +2,7 @@
 // import { Product } from '../models/product.model';
 
 import { createAction, props } from "@ngrx/store";
+import { Product } from "../models/product.model";
 
 
 // export enum ProductActionTypes {
@@ -29,22 +30,22 @@ import { createAction, props } from "@ngrx/store";
 
 
 export const enum ProductActions {
+    getAllProducts = '[PRODUCT] get all products',
     setAllProducts = '[PRODUCT] set all products',
-    getAllProducts = '[PRODUCT] set all products',
     setProduct = '[PRODUCT] add one product', 
     getProduct = '[PRODUCT] get one product',
     setError = '[PRODUCT] set error in product module',
 }
-
-export const setProductAction = createAction(
-    ProductActions.setAllProducts
+export const loadProductsAction = createAction(
+    ProductActions.getAllProducts
 );
 
-export const getProductAction = createAction(// ! this is an example
-    ProductActions.getAllProducts
+export const setProductsAction = createAction(
+    ProductActions.setAllProducts,
+    props<{ products: Product[] }>()
 );
 
 export const setErrorAction = createAction(
     ProductActions.setError,
-    props<{ error: any }>()
+    props<{ payload: any }>()
 );

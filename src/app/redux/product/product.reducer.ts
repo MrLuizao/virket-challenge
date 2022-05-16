@@ -32,14 +32,14 @@ export interface State {
     isLoading: boolean;
     isSuccess: boolean;
     hasError: boolean;
-    products: [Product];
+    products: Product[];
 }
 
 export const initialState: State = {
     isLoading: false,
     isSuccess: false,
     hasError: false,
-    products: null,
+    products: [],
 };
 
 export const featureKey = 'product';
@@ -47,14 +47,26 @@ export const featureKey = 'product';
 
 export const reducer = createReducer(
     initialState,
-    on(productActions.getProductAction,
-        (state, action) => ({ ...state, hasError: false, isLoading: true })),
+    on(productActions.loadProductsAction,
+        (state, action) => ({ 
+            ...state, 
+            hasError: false, 
+            isLoading: true 
+    })),
 
-    on(productActions.setProductAction,
-        (state, action) => ({ ...state, hasError: false, isLoading: false })),
+    on(productActions.setProductsAction, (state, {products}) => ({ 
+        ...state, 
+        hasError: false, 
+        isLoading: false,
+        products: [...products]
+    })),
 
-    on(productActions.setErrorAction,
-        (state, action) => ({ ...state, hasError: true, isLoading: false }))
+    on(productActions.setErrorAction, (state, payload) => ({ 
+        ...state,
+        hasError: true, 
+        isLoading: false,
+        error: payload
+    }))
     
 );
 

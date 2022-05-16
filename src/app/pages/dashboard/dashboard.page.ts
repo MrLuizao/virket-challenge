@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { SetCartItems } from 'src/app/redux/cart/cart.actions';
 import { Product } from 'src/app/redux/models/product.model';
+import { ProductFacade } from 'src/app/redux/product/product.facade';
 import { ToastService } from 'src/app/services/alerts/toast.service';
 import { ApiCartItemsService } from 'src/app/services/api-cart-items.service';
 
@@ -16,18 +17,24 @@ export class DashboardPage implements OnInit {
 
   constructor(  private store: Store<any>,
                 public toastSrv: ToastService,
+                private productFacade: ProductFacade,
                 private cartItemSrv: ApiCartItemsService) { }
 
   ngOnInit() {
-    this.cartItemSrv.getCartProducts().subscribe( (resp: any)=>{
-      this.dataProducts = resp['data'].products;
-      
-      this.dataProducts.forEach( (element)=>{
-        let newObject = { ...element }
-        this.store.dispatch( new SetCartItems(newObject));
-      });
 
+    this.productFacade.products$.subscribe( (resp)=>{
+      console.log('FACADE resp', resp);
     });
+    
+    // this.cartItemSrv.getCartProducts().subscribe( (resp: any)=>{
+    //   this.dataProducts = resp['data'].products;
+      
+    //   this.dataProducts.forEach( (element)=>{
+    //     let newObject = { ...element }
+    //     this.store.dispatch( new SetCartItems(newObject));
+    //   });
+
+    // });
   }
 
 }

@@ -17,8 +17,8 @@ export class ProductFacade {
         return this.store.select(fromSelector.hasErrorSelector).pipe(filter(x=>!!x));
     }
 
-    getProduct() {
-        return this.store.dispatch(fromActions.setProductAction());
-    }
+    // getProduct() {
+    //     return this.store.dispatch(fromActions.getProductAction());
+    // }
 
 }

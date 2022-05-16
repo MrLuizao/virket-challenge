@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 import { ENDPOINTS, URL_API } from 'src/environments/environment';
 
 @Injectable({
@@ -9,7 +10,7 @@ export class ApiProductsService {
 
   constructor( private http: HttpClient ) { }
 
-  getAllProducts(){
-    return this.http.get(`${URL_API}/${ENDPOINTS.products}`)
+  getAllProducts(): Observable<any>{
+    return this.http.get(`${URL_API}/${ENDPOINTS.products}`);
   }
 }
