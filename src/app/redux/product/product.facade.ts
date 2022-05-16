@@ -10,15 +10,15 @@ export class ProductFacade {
     constructor(private store: Store){}
 
     get products$() {
-        return this.store.select(fromSelector.productState);
+        return this.store.select(fromSelector.productsSelector);
     }
 
     get hasError$(){
         return this.store.select(fromSelector.hasErrorSelector).pipe(filter(x=>!!x));
     }
 
-    // getProduct() {
-    //     return this.store.dispatch(fromActions.getProductAction());
-    // }
+    getProduct() {
+        return this.store.dispatch(fromActions.loadProductsAction());
+    }
 
 }

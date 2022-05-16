@@ -25,6 +25,8 @@ export class DashboardPage implements OnInit {
     this.productFacade.products$.subscribe( (resp)=>{
       console.log('FACADE resp', resp);
     });
+
+    this.productFacade.getProduct();
     
     // this.cartItemSrv.getCartProducts().subscribe( (resp: any)=>{
     //   this.dataProducts = resp['data'].products;

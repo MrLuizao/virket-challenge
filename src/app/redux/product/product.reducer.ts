@@ -61,7 +61,7 @@ export const reducer = createReducer(
         products: [...products]
     })),
 
-    on(productActions.setErrorAction, (state, payload) => ({ 
+    on(productActions.setErrorAction, (state, {payload}) => ({ 
         ...state,
         hasError: true, 
         isLoading: false,
