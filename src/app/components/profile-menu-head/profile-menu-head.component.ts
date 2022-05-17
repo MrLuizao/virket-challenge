@@ -23,22 +23,10 @@ export class ProfileMenuHeadComponent implements OnInit {
   ngOnInit() {
     this.userFacade.guestUser$.subscribe(resp => {
       this.profileData = resp;
-      console.log('this.profileData', this.profileData);
       let indexOf = this.profileData['fullName'].indexOf(" ");
       this.nameShort = this.profileData.fullName.substring(0, indexOf);
     });
-    // this.store.select('user').subscribe( (store)=>{
-    //   this.profileData = store.user;
-      
-    //   this.thumbnail = this.profileData['picture'];
-    //   if(this.profileData['fullName'] === 'Invitado'){
-    //     this.nameShort = this.profileData['fullName'];
-    //   }else{
-    //     let indexOf = this.profileData['fullName'].indexOf(" ");
-    //     this.nameShort = this.profileData['fullName'].substring(0, indexOf);
-    //   }
 
-    // })
   }
 
   viewDeatilProfile(){

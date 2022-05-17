@@ -37,6 +37,5 @@ export class LoginComponent implements OnInit {
 
   confirmUserData(){
     this.modalController.dismiss();
-    // this.router.navigateByUrl('tabs/dashboard')
   }
 }

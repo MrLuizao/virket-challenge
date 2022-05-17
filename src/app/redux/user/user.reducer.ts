@@ -4,11 +4,9 @@ import * as userActions from './user.actions';
 
 
 export interface State {
-    // control
     isLoading: boolean;
     isSuccess: boolean;
     hasError: boolean;
-    // Data
     user: User;
 }
 
