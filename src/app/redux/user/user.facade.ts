@@ -13,8 +13,12 @@ export class UserFacade {
         return this.store.select(fromSelector.userSelector);
     }
 
-    get username$() {
-        return this.store.select(fromSelector.usernameSelector).pipe(filter(a=>!!a));
+    // get username$() {
+    //     return this.store.select(fromSelector.usernameSelector).pipe(filter(a=>!!a));
+    // }
+
+    get guestUser$() {
+        return this.store.select(fromSelector.guestUserSelector);
     }
 
     get hasError$(){
@@ -23,5 +27,9 @@ export class UserFacade {
 
     getUser() {
         return this.store.dispatch(fromActions.getUserAction());
+    }
+
+    getGuest() {
+        return this.store.dispatch(fromActions.setGuestUserAction());
     }
 }

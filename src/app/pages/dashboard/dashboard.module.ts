@@ -12,6 +12,8 @@ import { ProductFacade } from 'src/app/redux/product/product.facade';
 import { ProductsEffects } from 'src/app/redux/product/product.effects';
 import { EffectsModule } from '@ngrx/effects';
 import { ApiProductsService } from 'src/app/services/api-products.service';
+import { CartFacade } from 'src/app/redux/cart/cart.facade';
+import { CartEffects } from 'src/app/redux/cart/cart.effects';
 
 @NgModule({
   imports: [
@@ -20,10 +22,18 @@ import { ApiProductsService } from 'src/app/services/api-products.service';
     IonicModule,
     DashboardPageRoutingModule,
     ComponentsModule,
-    EffectsModule.forFeature([ProductsEffects])
+    EffectsModule.forFeature([
+      ProductsEffects, 
+      // CartEffects
+    ])
   ],
   declarations: [DashboardPage],
-  providers:[ProductFacade, ApiProductsService]
+  providers:[
+    ProductFacade, 
+    // ApiProductsService,
+    // CartFacade,
+
+  ]
 
 })
 export class DashboardPageModule {}

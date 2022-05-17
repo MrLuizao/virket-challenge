@@ -1,5 +1,6 @@
 import { ActionReducerMap } from "@ngrx/store";
 import { cartReducer } from "./cart/cart.reducer";
+// import { cartReducer } from "./cart/cart.reducer";
 import { productReducer } from "./product/product.reducer";
 import * as useReducer from "./user/user.reducer";
 

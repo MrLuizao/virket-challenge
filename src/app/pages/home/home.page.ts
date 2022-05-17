@@ -5,6 +5,7 @@ import { Store } from '@ngrx/store';
 import { Router } from '@angular/router';
 import { AppState } from 'src/app/redux/app.reducer';
 import { User } from 'src/app/redux/models/user.model';
+import { UserFacade } from 'src/app/redux/user/user.facade';
 // import { setUser } from 'src/app/redux/user/user.actions';
 
 
@@ -24,6 +25,7 @@ export class HomePage implements OnInit {
 
   constructor(  private store: Store<AppState>,
                 public router: Router,
+                private userFacade: UserFacade,
                 public modalController: ModalController) { }
 
   ngOnInit() {
@@ -54,14 +56,18 @@ export class HomePage implements OnInit {
 
   accessAsGuest(){
 
-    // const UPDATE_USER = {
-    //   fullName: 'Invitado',
-    //   email: '',
-    //   titleText: 'Bienvenido',
-    //   picture: 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png',
-    //   guest: true
-    // } 
-    //this.store.dispatch( setUser({ user: UPDATE_USER}) );
+
+    this.userFacade.guestUser$.subscribe(resp => {
+      this.userObject = resp;
+      console.log(this.userObject);
+    });
+
+    this.userFacade.hasError$.subscribe(err =>{
+      console.log(err);
+    });
+
+    this.userFacade.getGuest();
+
     this.router.navigateByUrl('tabs/dashboard');
   }
 

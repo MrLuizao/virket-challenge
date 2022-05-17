@@ -11,8 +11,10 @@ export class ApiDataService {
   constructor(private http: HttpClient) { }
 
   getUserData(): Observable<any> {
-    return this.http.get(`${URL_API}/${ENDPOINTS.dataUser}`).pipe(map((response: any) =>
-      response.data
-    ));
+    return this.http.get(`${URL_API}/${ENDPOINTS.dataUser}`)
+      .pipe(
+        map((response: any) => response.data
+      )
+    );
   }
 }

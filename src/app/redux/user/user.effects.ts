@@ -11,8 +11,8 @@ export class UserEffects {
         this.actions$.pipe(
             ofType(userActions.getUserAction),
             exhaustMap(() =>
-                this.service.getUserData().pipe(map((user: any) =>
-                    userActions.addUserAction({ name: `${user.fullName}`, lastname: `${user.lastname}` })),
+                this.service.getUserData().pipe(map((resp: any) =>
+                    userActions.setUserAction({ user: resp })),
                     catchError(error => of(userActions.setErrorAction({ error })))
                 )
             )

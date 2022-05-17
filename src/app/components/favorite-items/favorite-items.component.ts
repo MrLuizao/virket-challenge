@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { IProduct } from 'src/app/interfaces/product.interface';
+import { CartFacade } from 'src/app/redux/cart/cart.facade';
 // import { AddItemAction } from 'src/app/redux/product/product.actions';
 import { ToastService } from 'src/app/services/alerts/toast.service';
 import { BindBehaviorService } from 'src/app/services/rxjs/bind-behavior.service';
@@ -23,10 +24,11 @@ export class FavoriteItemsComponent implements OnInit {
                 public toastSrv: ToastService ) { }
 
   ngOnInit() {
-    this.storeItems$ = this.store.select(store => store.product);
-    this.storeItems$.subscribe( (data)=>{
-      this.favorites = data[0].filter( element => element.is_favorite );
-    });
+    // this.storeItems$ = this.store.select(store => store.product);
+    // this.storeItems$.subscribe( (data)=>{
+    //   this.favorites = data[0].filter( element => element.is_favorite );
+    // });
+    
   }
 
   goDetailItem(itemParam: IProduct){    

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { SetCartItems } from 'src/app/redux/cart/cart.actions';
+import { CartFacade } from 'src/app/redux/cart/cart.facade';
 import { Product } from 'src/app/redux/models/product.model';
 import { ProductFacade } from 'src/app/redux/product/product.facade';
 import { ToastService } from 'src/app/services/alerts/toast.service';
@@ -18,6 +18,7 @@ export class DashboardPage implements OnInit {
   constructor(  private store: Store<any>,
                 public toastSrv: ToastService,
                 private productFacade: ProductFacade,
+                private cartFacade: CartFacade,              
                 private cartItemSrv: ApiCartItemsService) { }
 
   ngOnInit() {
@@ -27,7 +28,8 @@ export class DashboardPage implements OnInit {
     });
 
     this.productFacade.getProduct();
-    
+
+
     // this.cartItemSrv.getCartProducts().subscribe( (resp: any)=>{
     //   this.dataProducts = resp['data'].products;
       

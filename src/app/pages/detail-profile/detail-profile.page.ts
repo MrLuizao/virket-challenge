@@ -36,13 +36,13 @@ export class DetailProfilePage implements OnInit {
   }
 
   handleData() {
-    this.userFacade.username$.subscribe(res => {
-      console.log(res);
-    });
+    // this.userFacade.username$.subscribe(res => {
+    //   console.log(res);
+    // });
     this.userFacade.hasError$.subscribe(res=>{
       console.log(res);
     });
-    //this.userFacade.getUser();
+    this.userFacade.getUser();
   }
 
   navigateToFavs() {
@@ -50,7 +50,7 @@ export class DetailProfilePage implements OnInit {
   }
 
   logoutSession() {
-    this.userFacade.getUser();
+    // this.userFacade.getUser();
    /*  const RESET_USER = {
       fullName: 'Invitado',
       email: '',

@@ -13,9 +13,13 @@ export const userSelector = createSelector(
     userState, ({ user }) => user
 );
 
-export const usernameSelector = createSelector(
-    userState, ({ username }) => username
+export const guestUserSelector = createSelector(
+    userState, ({ user }) => user
 );
+
+// export const usernameSelector = createSelector(
+//     userState, ({ user }) => user
+// );
 
 export const hasErrorSelector = createSelector(userState, ({ hasError }) => hasError);
 
