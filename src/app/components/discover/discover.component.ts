@@ -5,6 +5,7 @@ import { Store } from '@ngrx/store';
 import { IProduct } from 'src/app/interfaces/product.interface';
 // import { AddCartItem } from 'src/app/redux/cart/cart.actions';
 import { Product } from 'src/app/redux/models/product.model';
+import { ProductFacade } from 'src/app/redux/product/product.facade';
 // import { SetAllItemsAction } from 'src/app/redux/product/product.actions';
 import { ToastService } from 'src/app/services/alerts/toast.service';
 import { ApiProductsService } from 'src/app/services/api-products.service';
@@ -23,22 +24,20 @@ export class DiscoverComponent implements OnInit {
   nameSplit: string;
 
   constructor(  public router: Router, 
-                private productsSrv: ApiProductsService,
-                private store: Store<any>,
                 public toastSrv: ToastService,
                 private behaviourSrv: BindBehaviorService,
+                private prodFacade: ProductFacade,              
                 public toastController: ToastController) { }
 
   ngOnInit() {
-    // this.productsSrv.getAllProducts().subscribe( (resp: Product)=>{
-    //   this.productsData = resp['data'];      
-      
-    //   this.productsData.forEach( (element)=>{
-    //     let objectWithProperty = { ...element, open: false }
-    //     // this.store.dispatch( new SetAllItemsAction(objectWithProperty))
-    //   });
-      
-    // });
+
+    this.prodFacade.products$.subscribe( (response)=>{
+      this.productsData = response;      
+    })
+    this.prodFacade.hasError$.subscribe( (error)=>{
+      console.log(error);
+    })
+    this.prodFacade.getProduct();
   }
 
   viewDetailPage(itemParam: IProduct){    

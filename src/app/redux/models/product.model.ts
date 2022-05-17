@@ -12,6 +12,7 @@ export class Product{
     sku: string;
     colors: [Colors];
     color: {any};
+    open: boolean;
 }
 
 export class Colors{
