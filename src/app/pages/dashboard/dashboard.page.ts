@@ -23,11 +23,15 @@ export class DashboardPage implements OnInit {
 
   ngOnInit() {
 
-    this.productFacade.products$.subscribe( (resp)=>{
-      console.log('FACADE resp', resp);
-    });
+    // this.productFacade.products$.subscribe( (resp)=>{
+    //   // console.log('FACADE resp', resp);
 
-    this.productFacade.getProduct();
+    //   this.dataProducts = resp;
+    //   console.log('dataProducts', this.dataProducts);
+
+    // });
+
+    // this.productFacade.getProduct();
 
 
     // this.cartItemSrv.getCartProducts().subscribe( (resp: any)=>{

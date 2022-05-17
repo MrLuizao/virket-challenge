@@ -16,7 +16,8 @@ import { UserEffects } from '../redux/user/user.effects';
 import { CartFacade } from '../redux/cart/cart.facade';
 import { CartEffects } from '../redux/cart/cart.effects';
 import { ApiCartItemsService } from '../services/api-cart-items.service';
-
+import { StoreModule } from '@ngrx/store';
+import * as cartReducer from '../redux/cart/cart.reducer'
 
 
 @NgModule({
@@ -33,7 +34,8 @@ import { ApiCartItemsService } from '../services/api-cart-items.service';
     CommonModule, 
     FormsModule,
     IonicModule,
-    EffectsModule.forFeature([UserEffects, CartEffects])
+    EffectsModule.forFeature([UserEffects, CartEffects]),
+    StoreModule.forFeature(cartReducer.featureKey, cartReducer.reducer)
   ], 
   exports:[
     LoginComponent,
@@ -48,7 +50,6 @@ import { ApiCartItemsService } from '../services/api-cart-items.service';
     UserFacade, 
     ApiDataService,     
     CartFacade,
-    ApiCartItemsService
   ]
 
 })

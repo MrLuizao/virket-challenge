@@ -16,12 +16,8 @@ import { UserFacade } from 'src/app/redux/user/user.facade';
 })
 export class HomePage implements OnInit {
 
-  picUrl: string = 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png'
-  messageHome: string = 'Bienvenido';
-  nameUser: string = '';
-
   userObject: User;
-  isGuest: boolean;
+  nameUser: string;
 
   constructor(  private store: Store<AppState>,
                 public router: Router,
@@ -29,18 +25,17 @@ export class HomePage implements OnInit {
                 public modalController: ModalController) { }
 
   ngOnInit() {
+    this.userFacade.user$.subscribe(resp => {      
+      this.userObject = resp;      
 
-    // this.store.select('user').subscribe( (store)=>{
-    //   this.userObject = store.user;
-      
-    //   this.isGuest = this.userObject['guest'];
-    //   this.picUrl = this.userObject['picture'];
-    //   this.messageHome = this.userObject['titleText'];
-      
-    //   let indexOf = this.userObject['fullName'].indexOf(" ");
-    //   this.nameUser = this.userObject['fullName'].substring(0, indexOf);
-    // })
-    
+      let indexOf = this.userObject?.fullName.indexOf(" ");
+      this.nameUser = this.userObject?.fullName.substring(0, indexOf);
+    });
+
+    this.userFacade.hasError$.subscribe(err =>{
+      console.log(err);
+    });
+
   }
 
   async cardLoginModal(){
@@ -56,10 +51,8 @@ export class HomePage implements OnInit {
 
   accessAsGuest(){
 
-
     this.userFacade.guestUser$.subscribe(resp => {
       this.userObject = resp;
-      console.log(this.userObject);
     });
 
     this.userFacade.hasError$.subscribe(err =>{

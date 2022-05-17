@@ -1,5 +1,6 @@
 import { Action, createAction, props } from "@ngrx/store";
 import { Product } from "../models/product.model";
+import { User } from "../models/user.model";
 
 
 // export enum CartActionTypes {
@@ -35,7 +36,7 @@ export const loadItems = createAction(
 
 export const setCartItemsAction = createAction(
     ProductActions.setCartItems,
-    props<{ cartItems: any }>()
+    props<{ cartItems: Product[] }>()
 );
 
 export const setErrorAction = createAction(

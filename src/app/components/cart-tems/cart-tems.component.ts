@@ -32,6 +32,10 @@ export class CartTemsComponent implements OnInit {
       console.log('cartFacade items$', resp);
     });
 
+    this.cartFacade.hasError$.subscribe( (err)=>{
+      console.log('error', err);
+    });
+
     this.cartFacade.getCartItems();
   }
 

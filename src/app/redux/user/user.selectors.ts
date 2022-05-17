@@ -17,9 +17,10 @@ export const guestUserSelector = createSelector(
     userState, ({ user }) => user
 );
 
-// export const usernameSelector = createSelector(
-//     userState, ({ user }) => user
-// );
+export const resetUserSelector = createSelector(
+    userState, ({ user }) => user
+);
+
 
 export const hasErrorSelector = createSelector(userState, ({ hasError }) => hasError);
 

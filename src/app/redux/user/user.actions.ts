@@ -17,7 +17,7 @@ export const enum UserActions {
     setError = '[USER] set error in user module',
 
     setGuestUser = '[USER] set guest user',
-
+    resetUser = '[USER] reset user'
 }
 
 export const getUserAction = createAction(
@@ -26,7 +26,6 @@ export const getUserAction = createAction(
 
 export const setUserAction = createAction(
     UserActions.setUser,
-    // props<{ username: string; password: string }>()
     props<{ user: User }>()
 );
 
@@ -42,6 +41,12 @@ export const setErrorAction = createAction(// ! this is an example
 
 export const setGuestUserAction = createAction(
     UserActions.setGuestUser,
+    props<{ user: User }>()
     // props<{ fullName: string; email: string; picture: string;}>()
     // props<{ user: User }>()
+);
+
+export const resetUserAction = createAction(
+    UserActions.resetUser,
+    props<{ user: User }>()
 );

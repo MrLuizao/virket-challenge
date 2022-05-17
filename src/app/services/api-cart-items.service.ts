@@ -14,7 +14,7 @@ export class ApiCartItemsService {
   getCartProducts(): Observable<any>{
     return this.http.get(`${URL_API}/${ENDPOINTS.cartItems}`)
     .pipe(
-      map( (resp: any)=> resp.data)
+      map( (resp: any)=> resp.data.products)
     )
   }
 }

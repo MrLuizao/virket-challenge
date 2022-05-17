@@ -1,13 +1,8 @@
 import { createReducer, on } from '@ngrx/store';
-
 import { User } from '../models/user.model';
 import * as userActions from './user.actions';
 
-/* export const enum StateMachine {// ! Este es opcional, si lo quieres manejar como maquina de estados
-    idle = 'idle',
-    loading = 'loading'
-    // ....
-} */
+
 export interface State {
     // control
     isLoading: boolean;
@@ -15,15 +10,24 @@ export interface State {
     hasError: boolean;
     // Data
     user: User;
-    // username: string;
 }
 
 export const initialState: State = {
     isLoading: false,
     isSuccess: false,
     hasError: false,
-    user: null,
-    // username: null,
+    user: {
+        email: '',
+        gender: '',
+        fullName: '',
+        picture: {
+            large: '',
+            medium: 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png',
+            thumbnail: '',
+        },
+        titleText: 'Bienvenido',
+        guest: null
+    },
 };
 
 export const featureKey = 'user';
@@ -43,7 +47,15 @@ export const reducer = createReducer(
             ...state, 
             hasError: false, 
             isLoading: false,
-            user: action.user 
+            // user: action.user 
+            user: {
+                email: action.user.email,
+                gender: action.user.gender,
+                fullName: action.user.fullName,
+                picture: action.user.picture,
+                titleText: 'Bienvenido de vuelta,',
+                guest: false,
+            }
         })),
 
     on(userActions.setGuestUserAction,
@@ -51,20 +63,34 @@ export const reducer = createReducer(
             ...state, 
             hasError: false, 
             isLoading: false,
-            fullName: 'Invitado',
-            email: '',
-            picture: 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png'
+            user: {
+                email: '',
+                gender: '',
+                fullName: 'Invitado ',
+                picture: {
+                    large: '',
+                    medium: 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png',
+                    thumbnail: 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png',
+                },
+                titleText: 'Bienvenido',
+                guest: true
+            },
         })),
 
-    // Se resuelve el endpoint
     on(userActions.addUserAction,
-        // (state, action) => ({ ...state, username: action.name, isLoading: false })),
         (state, action) => ({ ...state, isLoading: false, hasError: false,  })),
 
-    // Se devuelve error por el endpoint
     on(userActions.setErrorAction,
         (state, action) => ({ ...state, hasError: true, isLoading: false })),
+
+    on( userActions.resetUserAction,
+        (state, action) => ({ 
+            ...state, 
+            isLoading: false,
+            isSuccess: false,
+            hasError: false,
+            user: initialState.user
+        })),
 );
 
-// exportar ese reducer
 export const userReducer = (state: any, action: any) => reducer(state, action);

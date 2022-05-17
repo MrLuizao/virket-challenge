@@ -13,10 +13,6 @@ export class UserFacade {
         return this.store.select(fromSelector.userSelector);
     }
 
-    // get username$() {
-    //     return this.store.select(fromSelector.usernameSelector).pipe(filter(a=>!!a));
-    // }
-
     get guestUser$() {
         return this.store.select(fromSelector.guestUserSelector);
     }
@@ -30,6 +26,11 @@ export class UserFacade {
     }
 
     getGuest() {
-        return this.store.dispatch(fromActions.setGuestUserAction());
+        return this.store.dispatch(fromActions.setGuestUserAction({user: null}));
     }
+
+    resetUser() {
+        return this.store.dispatch(fromActions.resetUserAction({user: null}));
+    }
+
 }

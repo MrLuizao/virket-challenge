@@ -36,7 +36,7 @@ export const initialState: State = {
     isLoading: false,
     isSuccess: false,
     hasError: false,
-    cartItems: null
+    cartItems: []
 };
 
 export const featureKey = 'cartItems';
