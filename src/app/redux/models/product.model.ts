@@ -11,8 +11,9 @@ export class Product{
     score: number;
     sku: string;
     colors: [Colors];
-    color: {any};
+    color: Colors;
     open: boolean;
+    selectedColor: Colors
 }
 
 export class Colors{

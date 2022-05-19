@@ -13,7 +13,7 @@ export class ApiProductsService {
 
   getAllProducts(): Observable<any>{
     return this.http.get(`${URL_API}/${ENDPOINTS.products}`).pipe(
-      map( (resp: any)=> resp.data)
+      map( (resp: any)=> resp.data.map( (prop)=> ({...prop, color: prop.colors[0]})) )
     )
   }
 }

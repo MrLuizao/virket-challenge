@@ -23,6 +23,8 @@ export class DiscoverComponent implements OnInit {
 
   nameSplit: string;
 
+  detailIndex: number = -1;
+
   constructor(  public router: Router, 
                 public toastSrv: ToastService,
                 private behaviourSrv: BindBehaviorService,
@@ -32,7 +34,8 @@ export class DiscoverComponent implements OnInit {
   ngOnInit() {
 
     this.prodFacade.products$.subscribe( (response)=>{
-      this.productsData = response;      
+      this.productsData = response;
+      console.log(this.productsData);
     })
     this.prodFacade.hasError$.subscribe( (error)=>{
       console.log(error);
@@ -53,8 +56,18 @@ export class DiscoverComponent implements OnInit {
     this.toastSrv.showToastAlert('Producto agregado correctamente');
   }
 
-  moreActions(index){    
-    this.productsData[index].open = !this.productsData[index].open;
+  // moreActions(index){  
+  //   console.log(index);
+  //   return
+  //   this.productsData[index].open = !this.productsData[index].open;
+  // }
+
+  toogleDetails(index: number){
+    if(index === this.detailIndex){
+      this.detailIndex = -1;
+      return;
+    }
+    this.detailIndex = index;
   }
 
 }
