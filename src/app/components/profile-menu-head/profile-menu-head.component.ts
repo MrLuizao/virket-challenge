@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { AppState } from 'src/app/redux/app.reducer';
 import { User } from 'src/app/redux/models/user.model';
+import { UserFacade } from 'src/app/redux/user/user.facade';
 
 @Component({
   selector: 'app-profile-menu-head',
@@ -16,21 +17,16 @@ export class ProfileMenuHeadComponent implements OnInit {
   nameShort: string;
 
   constructor(  private store: Store<AppState>,
+                private userFacade: UserFacade,
                 public router: Router ) { }
 
   ngOnInit() {
-    this.store.select('user').subscribe( (store)=>{
-      this.profileData = store.user;
-      
-      this.thumbnail = this.profileData['picture'];
-      if(this.profileData['fullName'] === 'Invitado'){
-        this.nameShort = this.profileData['fullName'];
-      }else{
-        let indexOf = this.profileData['fullName'].indexOf(" ");
-        this.nameShort = this.profileData['fullName'].substring(0, indexOf);
-      }
+    this.userFacade.guestUser$.subscribe(resp => {
+      this.profileData = resp;
+      let indexOf = this.profileData['fullName'].indexOf(" ");
+      this.nameShort = this.profileData.fullName.substring(0, indexOf);
+    });
 
-    })
   }
 
   viewDeatilProfile(){

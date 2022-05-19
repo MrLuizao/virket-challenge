@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { IProduct } from 'src/app/interfaces/product.interface';
+import { ProductFacade } from 'src/app/redux/product/product.facade';
 import { BindBehaviorService } from 'src/app/services/rxjs/bind-behavior.service';
 
 @Component({
@@ -24,18 +25,22 @@ export class FilterPage implements OnInit {
 
   constructor(  public router: Router, 
                 private store: Store<any>,
+                private prodFacade: ProductFacade,              
                 private behaviourSrv: BindBehaviorService ) { }
 
   ngOnInit() {
 
-    this.storeItems$ = this.store.select(store => store.product);
-    this.storeItems$.subscribe( (data)=>{
-      this.products = data;
-      this.filterData = this.products;
 
+    this.prodFacade.products$.subscribe( (response)=>{
+      this.products = response;
+      this.filterData = response;    
       const brandsMap = this.products.map( element => element.brand );
-      this.brands = brandsMap.filter( (item,index) => brandsMap.indexOf(item) === index );
-    });
+      this.brands = brandsMap.filter( (item,index) => brandsMap.indexOf(item) === index );  
+    })
+    this.prodFacade.hasError$.subscribe( (error)=>{
+      console.log(error);
+    })
+    this.prodFacade.getProduct();
 
   }
 

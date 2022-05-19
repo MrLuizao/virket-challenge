@@ -5,7 +5,8 @@ import { Store } from '@ngrx/store';
 import { Router } from '@angular/router';
 import { AppState } from 'src/app/redux/app.reducer';
 import { User } from 'src/app/redux/models/user.model';
-import { setUser } from 'src/app/redux/user/user.actions';
+import { UserFacade } from 'src/app/redux/user/user.facade';
+// import { setUser } from 'src/app/redux/user/user.actions';
 
 
 @Component({
@@ -16,28 +17,25 @@ import { setUser } from 'src/app/redux/user/user.actions';
 export class HomePage implements OnInit {
 
   userObject: User;
-  picUrl: string;
   nameUser: string;
-  messageHome: string;
-  isGuest: boolean;
 
   constructor(  private store: Store<AppState>,
                 public router: Router,
+                private userFacade: UserFacade,
                 public modalController: ModalController) { }
 
   ngOnInit() {
+    this.userFacade.user$.subscribe(resp => {      
+      this.userObject = resp;      
 
-    this.store.select('user').subscribe( (store)=>{
-      this.userObject = store.user;
-      
-      this.isGuest = this.userObject['guest'];
-      this.picUrl = this.userObject['picture'];
-      this.messageHome = this.userObject['titleText'];
-      
-      let indexOf = this.userObject['fullName'].indexOf(" ");
-      this.nameUser = this.userObject['fullName'].substring(0, indexOf);
-    })
-    
+      let indexOf = this.userObject?.fullName.indexOf(" ");
+      this.nameUser = this.userObject?.fullName.substring(0, indexOf);
+    });
+
+    this.userFacade.hasError$.subscribe(err =>{
+      console.log(err);
+    });
+
   }
 
   async cardLoginModal(){
@@ -53,14 +51,16 @@ export class HomePage implements OnInit {
 
   accessAsGuest(){
 
-    const UPDATE_USER = {
-      fullName: 'Invitado',
-      email: '',
-      titleText: 'Bienvenido',
-      picture: 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png',
-      guest: true
-    } 
-    this.store.dispatch( setUser({ user: UPDATE_USER}) );
+    this.userFacade.guestUser$.subscribe(resp => {
+      this.userObject = resp;
+    });
+
+    this.userFacade.hasError$.subscribe(err =>{
+      console.log(err);
+    });
+
+    this.userFacade.getGuest();
+
     this.router.navigateByUrl('tabs/dashboard');
   }
 

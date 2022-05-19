@@ -9,11 +9,11 @@
 
 <ion-content>
 
-  <ion-grid class="contain-grid">
-
+  <ion-grid class="contain-grid" *ngIf="detailData">
+  
     <ion-row>
       <ion-col size="5" class="flex jf-c">
-        <img [src]="urlProfile" class="profile-img">
+        <img [src]="detailData?.picture.medium" class="profile-img">
       </ion-col>
       <ion-col size="7" class="contain-name">
         <ion-row>
@@ -24,7 +24,7 @@
         </ion-row>
       </ion-col>
       <ion-col class="top-1 ml-1">
-        <span class="mail-title">{{emailDetail}}</span>          
+        <span class="mail-title">{{detailData?.email}}</span>          
       </ion-col>
       <ion-col size="12" class="top-2 ml-1">
         <img src="assets/svg/btn-view-favs.svg" (click)="navigateToFavs()">

@@ -21,14 +21,14 @@ export class CartPage implements OnInit {
 
   ngOnInit() {
 
-    this.cartItems$ = this.store.select(store => store.cart);
-    this.cartItems$.subscribe( (data)=>{
-      this.cartProducts = data;
+    // this.cartItems$ = this.store.select(store => store.cart);
+    // this.cartItems$.subscribe( (data)=>{
+    //   this.cartProducts = data;
 
-      this.arrayPrices = this.cartProducts.map( element => parseFloat(element.product_price) );
-      this.subTotalAccount = this.arrayPrices.reduce( (accumulator, curr) => accumulator + curr);
-      this.totalAccount = this.subTotalAccount + this.deliveryCost;
-    });
+    //   this.arrayPrices = this.cartProducts.map( element => parseFloat(element.product_price) );
+    //   this.subTotalAccount = this.arrayPrices.reduce( (accumulator, curr) => accumulator + curr);
+    //   this.totalAccount = this.subTotalAccount + this.deliveryCost;
+    // });
 
   }
 
