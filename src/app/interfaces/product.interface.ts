@@ -11,6 +11,8 @@ export interface IProduct{
     score: number;
     sku: string;
     colors: [IColors];
+
+    selectedColor: IColors;
 }
 
 export interface IColors{

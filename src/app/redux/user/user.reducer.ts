@@ -1,28 +1,94 @@
 import { createReducer, on } from '@ngrx/store';
-import { User } from "../models/user.model";
-import { setUser } from "./user.actions";
+import { User } from '../models/user.model';
+import * as userActions from './user.actions';
+
 
 export interface State {
+    isLoading: boolean;
+    isSuccess: boolean;
+    hasError: boolean;
     user: User;
 }
 
 export const initialState: State = {
+    isLoading: false,
+    isSuccess: false,
+    hasError: false,
     user: {
-        fullName: '',
         email: '',
+        gender: '',
+        fullName: '',
+        picture: {
+            large: '',
+            medium: 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png',
+            thumbnail: '',
+        },
         titleText: 'Bienvenido',
-        picture: 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png',
         guest: null
-    } 
-}
+    },
+};
 
-const _setUserReducer = createReducer( initialState,
-    on( setUser, (state, {user}) => ({
-        ...state, 
-        user: {...user} 
-    })),
-)
+export const featureKey = 'user';
 
-export function setUserReducer(state: any, action: any) {
-    return _setUserReducer(state, action);
-}
+export const reducer = createReducer(
+    initialState,
+
+    on(userActions.getUserAction,
+        (state, action) => ({ 
+            ...state, 
+            hasError: false, 
+            isLoading: true 
+        })),
+
+    on(userActions.setUserAction,
+        (state, action) => ({ 
+            ...state, 
+            hasError: false, 
+            isLoading: false,
+            // user: action.user 
+            user: {
+                email: action.user.email,
+                gender: action.user.gender,
+                fullName: action.user.fullName,
+                picture: action.user.picture,
+                titleText: 'Bienvenido de vuelta,',
+                guest: false,
+            }
+        })),
+
+    on(userActions.setGuestUserAction,
+        (state, action) => ({ 
+            ...state, 
+            hasError: false, 
+            isLoading: false,
+            user: {
+                email: '',
+                gender: '',
+                fullName: 'Invitado ',
+                picture: {
+                    large: '',
+                    medium: 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png',
+                    thumbnail: 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png',
+                },
+                titleText: 'Bienvenido',
+                guest: true
+            },
+        })),
+
+    on(userActions.addUserAction,
+        (state, action) => ({ ...state, isLoading: false, hasError: false,  })),
+
+    on(userActions.setErrorAction,
+        (state, action) => ({ ...state, hasError: true, isLoading: false })),
+
+    on( userActions.resetUserAction,
+        (state, action) => ({ 
+            ...state, 
+            isLoading: false,
+            isSuccess: false,
+            hasError: false,
+            user: initialState.user
+        })),
+);
+
+export const userReducer = (state: any, action: any) => reducer(state, action);

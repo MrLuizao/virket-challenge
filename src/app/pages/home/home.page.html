@@ -9,17 +9,17 @@
 
     <ion-row class="top-2">
       <ion-col>
-        <img [src]="picUrl" class="profile-pic">
+        <img [src]="userObject?.picture.medium" class="profile-pic">
       </ion-col>
     </ion-row>
 
     <ion-row>
-      <span class="txt-gray-min">{{messageHome}} {{nameUser}}</span>
+      <span class="txt-gray-min">{{userObject?.titleText}} {{nameUser}}</span>
     </ion-row>
 
     <ion-col size="9" class="top-2">
-      <ion-button color="primary" (click)="cardLoginModal()" *ngIf="isGuest === null || isGuest">Entrar</ion-button>
-      <ion-button color="primary" (click)="goEntryAfterRegistry()" *ngIf="isGuest === false">Entrar</ion-button>
+      <ion-button color="primary" (click)="cardLoginModal()" *ngIf="userObject?.guest == null">Entrar</ion-button>
+      <ion-button color="primary" (click)="goEntryAfterRegistry()" *ngIf="userObject?.guest != null">Entrar</ion-button>
     </ion-col>
 
     <ion-col size="9" class="top-1">

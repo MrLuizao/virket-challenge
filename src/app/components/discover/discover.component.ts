@@ -3,9 +3,10 @@ import { Router } from '@angular/router';
 import { ToastController } from '@ionic/angular';
 import { Store } from '@ngrx/store';
 import { IProduct } from 'src/app/interfaces/product.interface';
-import { AddCartItem } from 'src/app/redux/cart/cart.actions';
+// import { AddCartItem } from 'src/app/redux/cart/cart.actions';
 import { Product } from 'src/app/redux/models/product.model';
-import { SetAllItemsAction } from 'src/app/redux/product/product.actions';
+import { ProductFacade } from 'src/app/redux/product/product.facade';
+// import { SetAllItemsAction } from 'src/app/redux/product/product.actions';
 import { ToastService } from 'src/app/services/alerts/toast.service';
 import { ApiProductsService } from 'src/app/services/api-products.service';
 import { BindBehaviorService } from 'src/app/services/rxjs/bind-behavior.service';
@@ -22,23 +23,24 @@ export class DiscoverComponent implements OnInit {
 
   nameSplit: string;
 
+  detailIndex: number = -1;
+
   constructor(  public router: Router, 
-                private productsSrv: ApiProductsService,
-                private store: Store<any>,
                 public toastSrv: ToastService,
                 private behaviourSrv: BindBehaviorService,
+                private prodFacade: ProductFacade,              
                 public toastController: ToastController) { }
 
   ngOnInit() {
-    this.productsSrv.getAllProducts().subscribe( (resp: Product)=>{
-      this.productsData = resp['data'];      
-      
-      this.productsData.forEach( (element)=>{
-        let objectWithProperty = { ...element, open: false }
-        this.store.dispatch( new SetAllItemsAction(objectWithProperty))
-      });
-      
-    });
+
+    this.prodFacade.products$.subscribe( (response)=>{
+      this.productsData = response;
+      console.log(this.productsData);
+    })
+    this.prodFacade.hasError$.subscribe( (error)=>{
+      console.log(error);
+    })
+    this.prodFacade.getProduct();
   }
 
   viewDetailPage(itemParam: IProduct){    
@@ -50,12 +52,22 @@ export class DiscoverComponent implements OnInit {
 
     let product = { ...paramItem, color: paramItem.colors[0] }
 
-    this.store.dispatch( new AddCartItem(product));
+    // this.store.dispatch( new AddCartItem(product));
     this.toastSrv.showToastAlert('Producto agregado correctamente');
   }
 
-  moreActions(index){    
-    this.productsData[index].open = !this.productsData[index].open;
+  // moreActions(index){  
+  //   console.log(index);
+  //   return
+  //   this.productsData[index].open = !this.productsData[index].open;
+  // }
+
+  toogleDetails(index: number){
+    if(index === this.detailIndex){
+      this.detailIndex = -1;
+      return;
+    }
+    this.detailIndex = index;
   }
 
 }

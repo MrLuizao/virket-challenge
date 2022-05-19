@@ -6,9 +6,10 @@
   </ion-col>
 
   <ion-row class="top-15">
-    <ion-col size="6" *ngFor="let item of productsData; let i = index">        
-      <ion-row *ngIf="!item.open">
-        <div class="card-item m-10">
+    <ion-col size="6" *ngFor="let item of productsData; let i = index">   
+
+      <ion-row [ngClass]="{'no-display': i === detailIndex }">
+        <div class="card-item-list m-10">
 
           <ion-row class="head-row">
             <ion-col size="9">
@@ -39,7 +40,7 @@
                 <ion-icon name="star-half" color="warning"></ion-icon>
               </ion-row>
             </ion-col>
-            <ion-col size="4" class="btn-add" (click)="moreActions(i)">
+            <ion-col size="4" class="btn-add" (click)="toogleDetails(i)">
               <ion-icon name="add-outline"></ion-icon>
             </ion-col>
           </ion-row>
@@ -47,12 +48,11 @@
         </div>
       </ion-row>
 
-      <ion-row *ngIf="item.open" class="h-100">
+      <ion-row class="row-details" [ngClass]="{'row-details-active': i === detailIndex }">
         <div class="options-card m-10">
-
-          <ion-row class="top-option-btn" (click)="moreActions(i)">
+          <ion-row class="top-option-btn">
             <ion-col size="12" class="item-end" style="margin-right: 15px;">
-              <svg width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <svg (click)="toogleDetails(i)" width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg" >
                 <circle cx="12.5" cy="12.5" r="12.5" fill="#C9C7C7" fill-opacity="0.2"/>
                 <path d="M6.7625 8L12.5 13.7375L18.2375 8L20 9.775L12.5 17.275L5 9.775L6.7625 8Z" fill="#BDBCBC"/>
               </svg>

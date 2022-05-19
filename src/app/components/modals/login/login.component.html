@@ -7,7 +7,7 @@
 </ion-header>
 
 <ion-content>
-  <ion-grid>
+  <ion-grid *ngIf="userObject">
 
     <ion-row>
       <ion-col>
@@ -23,12 +23,12 @@
 
     <ion-item>
       <ion-label position="stacked">Nombre completo</ion-label>
-      <ion-input disabled [(ngModel)]="nameUser"></ion-input>
+      <ion-input disabled [(ngModel)]="userObject.email"></ion-input>
     </ion-item>
   
     <ion-item>
       <ion-label position="stacked">Correo electrónicop</ion-label>
-      <ion-input disabled [ngModel]="mailUser"></ion-input>
+      <ion-input disabled [ngModel]="userObject.email"></ion-input>
     </ion-item>
 
     <ion-col size="9" class="top-2">
