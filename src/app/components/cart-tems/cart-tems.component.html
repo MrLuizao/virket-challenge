@@ -4,16 +4,16 @@
     <ion-col size="2">
       <img [src]="item.product_image"/>
     </ion-col>
-    <ion-col size="5">
+    <ion-col size="6">
       <ion-row>
-        <span>{{item.product_name}}</span>
+        <span class="txt-prod">{{item.product_name}}</span>
       </ion-row>
       <ion-row>
-        <span> Color {{item.color.name}}</span>
+        <span class="txt-col"> Color {{item.color.name}}</span>
       </ion-row>
     </ion-col>
-    <ion-col size="4">
-      <span> $ {{item.product_price}}</span>
+    <ion-col size="3">
+      <span class="txt-price"> $ {{item.product_price}}</span>
     </ion-col>
     <ion-col size="1" (click)="discardProductCart(item.id)">
       <ion-icon name="remove-circle-outline" color="secondary"></ion-icon>    
