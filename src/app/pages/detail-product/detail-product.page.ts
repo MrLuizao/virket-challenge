@@ -23,7 +23,6 @@ export class DetailProductPage implements OnInit {
   ngOnInit() {
     this.behaviourSrv.$getDataItem.subscribe( (resp: IProduct) =>{
       this.productItem = resp;
-      console.log( this.productItem);
     }).unsubscribe();
   }
 

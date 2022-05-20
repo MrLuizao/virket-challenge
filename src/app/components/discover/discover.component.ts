@@ -7,7 +7,7 @@ import { CartFacade } from 'src/app/redux/cart/cart.facade';
 import { ProductFacade } from 'src/app/redux/product/product.facade';
 import { ToastService } from 'src/app/services/alerts/toast.service';
 import { BindBehaviorService } from 'src/app/services/rxjs/bind-behavior.service';
-import * as fromActions from 'src/app/redux/cart/cart.actions';
+import { Product } from 'src/app/redux/models/product.model';
 
 @Component({
   selector: 'app-discover',
@@ -25,8 +25,7 @@ export class DiscoverComponent implements OnInit {
                 private behaviourSrv: BindBehaviorService,
                 private prodFacade: ProductFacade,   
                 private cartFacade: CartFacade,        
-                public toastController: ToastController,
-                private store: Store) { }
+                public toastController: ToastController) { }
 
   ngOnInit() {
 
@@ -44,16 +43,8 @@ export class DiscoverComponent implements OnInit {
     this.router.navigateByUrl('detail-product');
   }
 
-  addToCart(paramItem: any){    
-
-    // let product = { ...paramItem, color: paramItem.colors[0] }
-    // this.store.dispatch( new AddCartItem(product));
-
-    // this.cartFacade.addItem$.subscribe((response)=>{
-    //   console.log(response);
-    // })
-    // this.store.dispatch(fromActions.addItemAction(product));
-
+  addToCart(paramItem: Product){    
+    this.cartFacade.addItem(paramItem);
     this.toastSrv.showToastAlert('Producto agregado correctamente');
   }
 

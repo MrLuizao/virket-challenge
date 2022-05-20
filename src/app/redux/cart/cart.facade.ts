@@ -3,6 +3,7 @@ import { Store } from "@ngrx/store";
 import * as fromSelector from 'src/app/redux/cart/cart.selectors';
 import * as fromActions from 'src/app/redux/cart/cart.actions';
 import { filter } from "rxjs/operators";
+import { Product } from "../models/product.model";
 
 @Injectable()
 
@@ -23,11 +24,11 @@ export class CartFacade {
         return this.store.dispatch(fromActions.loadItems());
     }
 
-    get addItem$() {
-        return this.store.select(fromSelector.cartAddItemSelector);
+    addItem( product: Product) {
+        return this.store.dispatch(fromActions.addItemAction({payload: product}));
     }
 
-    // updateCartItems() {
-    //     return this.store.dispatch(fromActions.addItemAction());
-    // }
+    deleteItem( item: number) {
+        return this.store.dispatch(fromActions.deleteItemAction({item}));
+    }
 }

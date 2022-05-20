@@ -1,35 +1,12 @@
-import { Action, createAction, props } from "@ngrx/store";
+import { createAction, props } from "@ngrx/store";
 import { Product } from "../models/product.model";
-import { User } from "../models/user.model";
-
-
-// export enum CartActionTypes {
-//     SET_CART_ITEMS = '[CART] Cart Items',
-//     ADD_CART_ITEM = '[CART] Add Item',
-//     REMOVE_CART_ITEM = '[CART] Remove Item'
-// }
-
-// export class SetCartItems implements Action {
-//     readonly type = CartActionTypes.SET_CART_ITEMS;
-//     constructor ( public payload: Product){}
-// }
-// export class AddCartItem implements Action {
-//     readonly type = CartActionTypes.ADD_CART_ITEM;
-//     constructor ( public payload: Product){}
-// }
-// export class RemoveCartItem implements Action {
-//     readonly type = CartActionTypes.REMOVE_CART_ITEM;
-//     constructor ( public payload: Product){}
-// }
-
-// export type CartAction = SetCartItems | AddCartItem | RemoveCartItem;
 
 export const enum ProductActions {
     loadCartItems = '[CART] load cart items',
     setCartItems = '[CART] cart items',
     setError = '[CART] set error in cart module',
-
-    addItem = '[CART] add item',
+    addItem = '[CART] add item ',
+    deleteItem = '[CART] delete item '
 }
 
 export const loadItems = createAction(
@@ -46,8 +23,15 @@ export const setErrorAction = createAction(
     props<{ payload: any }>()
 );
 
-
 export const addItemAction = createAction(
     ProductActions.addItem,
-    props<{ item: Product }>()
+    props<{ payload: Product }>()
 );
+
+export const deleteItemAction = createAction(
+    ProductActions.deleteItem,
+    props<{item: number}>()
+)
+
+
+  

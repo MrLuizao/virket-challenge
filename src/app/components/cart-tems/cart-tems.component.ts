@@ -1,5 +1,4 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { CartFacade } from 'src/app/redux/cart/cart.facade';
 import { ToastService } from 'src/app/services/alerts/toast.service';
@@ -18,8 +17,7 @@ export class CartTemsComponent implements OnInit {
 
   constructor(  private cartFacade: CartFacade,  
                 private behaviourSrv: BindBehaviorService,           
-                public toastSrv: ToastService,
-                private store: Store ) { }
+                public toastSrv: ToastService) { }
 
   ngOnInit() {
 
@@ -28,15 +26,10 @@ export class CartTemsComponent implements OnInit {
       this.behaviourSrv.setDataCart(this.cartProducts);
     });
 
-    this.cartFacade.hasError$.subscribe( (err)=>{
-      console.log('error', err);
-    });
-
-    this.cartFacade.getCartItems();
   }
 
-  discardProductCart(paramItem : any){
-    // this.store.dispatch( new RemoveCartItem(paramItem));
+  discardProductCart(paramItem : number){
+    this.cartFacade.deleteItem(paramItem);
     this.toastSrv.showToastAlert('Producto removido correctamente');
   }
 
