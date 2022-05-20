@@ -10,6 +10,47 @@
 
 <ion-content>
 
-  <app-favorite-items></app-favorite-items>
+  <ion-grid>
+    <ion-row style="margin-top: 44px;">
+      <ion-col size="6" *ngFor="let item of favorites; let i = index">        
+        <ion-row>
+          <div class="card-item m-10">
+  
+            <ion-row class="head-row">
+              <ion-col size="9">
+                <ion-row>
+                  <span class="txt-card-sub">{{item.brand}}</span>
+                </ion-row>
+                <ion-row>
+                  <span class="txt-card-title">{{item.product_name | slice:0:16}}</span>  
+                </ion-row>
+              </ion-col>
+              <ion-col size="3">
+                <ion-icon name="heart-outline" class="iconSize" *ngIf="!item.is_favorite"></ion-icon>
+                <ion-icon name="heart" class="iconSize fill" *ngIf="item.is_favorite"></ion-icon>
+              </ion-col>
+            </ion-row>
+  
+            <ion-row class="jf-c" (click)="goDetailItem(item)">
+              <img [src]="item.product_image">
+            </ion-row>
+  
+            <ion-row class="height-row">
+              <ion-col size="8" class="col-down-align">
+                <ion-row>
+                  <span class="txt-card-price"> $ {{item.product_price}}</span>
+                </ion-row>
+                <ion-row style="margin-left: 15px;">
+                  <ion-icon name="star" color="warning"></ion-icon>
+                  <ion-icon name="star-half" color="warning"></ion-icon>
+                </ion-row>
+              </ion-col>
+            </ion-row>
+  
+          </div>
+        </ion-row>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
   
 </ion-content>

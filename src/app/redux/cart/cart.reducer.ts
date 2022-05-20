@@ -29,17 +29,17 @@ export interface State {
     isLoading: boolean;
     isSuccess: boolean;
     hasError: boolean;
-    cartItems: Product[];
+    items: Product[];
 }
 
 export const initialState: State = {
     isLoading: false,
     isSuccess: false,
     hasError: false,
-    cartItems: []
+    items: [],
 };
 
-export const featureKey = 'cartItems';
+export const featureKey = 'cart';
 
 export const reducer = createReducer(
     initialState,
@@ -51,11 +51,11 @@ export const reducer = createReducer(
             isLoading: true 
     })),
 
-    on(cartActions.setCartItemsAction, (state, {cartItems}) => ({ 
+    on(cartActions.setCartItemsAction, (state, {items}) => ({ 
         ...state, 
         hasError: false, 
         isLoading: false,
-        cartItems: [...cartItems]
+        items: [...items]
     })),
 
     on(cartActions.setErrorAction, (state, {payload}) => ({ 
@@ -63,7 +63,9 @@ export const reducer = createReducer(
         hasError: true, 
         isLoading: false,
         error: payload
-    }))
+    })),
+
+    on(cartActions.addItemAction, (state, {item}) => ({ ...state, item: {...item}})),
 )
 
 export const cartReducer = (state: any, action: any) => reducer(state, action);

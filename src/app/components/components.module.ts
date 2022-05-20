@@ -6,7 +6,6 @@ import { FormsModule } from '@angular/forms';
 import { DiscoverComponent } from './discover/discover.component';
 import { ProfileMenuHeadComponent } from './profile-menu-head/profile-menu-head.component';
 import { FooterTabsComponent } from './footer-tabs/footer-tabs.component';
-import { FavoriteItemsComponent } from './favorite-items/favorite-items.component';
 import { CartTemsComponent } from './cart-tems/cart-tems.component';
 import { PromotionsComponent } from './promotions/promotions.component';
 import { UserFacade } from '../redux/user/user.facade';
@@ -27,7 +26,6 @@ import * as cartReducer from '../redux/cart/cart.reducer'
     ProfileMenuHeadComponent,
     FooterTabsComponent,
     CartTemsComponent,
-    FavoriteItemsComponent,
     PromotionsComponent
   ],
   imports: [
@@ -43,7 +41,6 @@ import * as cartReducer from '../redux/cart/cart.reducer'
     ProfileMenuHeadComponent,
     FooterTabsComponent,
     CartTemsComponent,
-    FavoriteItemsComponent,
     PromotionsComponent
   ],
   providers:[

@@ -21,7 +21,7 @@ export const initialState: State = {
         picture: {
             large: '',
             medium: 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png',
-            thumbnail: '',
+            thumbnail: 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png',
         },
         titleText: 'Bienvenido',
         guest: null
@@ -45,7 +45,6 @@ export const reducer = createReducer(
             ...state, 
             hasError: false, 
             isLoading: false,
-            // user: action.user 
             user: {
                 email: action.user.email,
                 gender: action.user.gender,

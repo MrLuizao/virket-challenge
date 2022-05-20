@@ -9,7 +9,12 @@ export const isLoadingSelector = createSelector(
 );
 
 export const cartItemsSelector = createSelector(
-    productState, ({ cartItems }) => cartItems
+    productState, ({ items }) => items
 );
+
+export const cartAddItemSelector = createSelector(
+    productState, ( item ) => item
+);
+
 
 export const hasErrorSelector = createSelector(productState, ({ hasError }) => hasError);

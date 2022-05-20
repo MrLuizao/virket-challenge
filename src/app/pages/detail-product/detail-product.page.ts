@@ -18,15 +18,12 @@ export class DetailProductPage implements OnInit {
   radioColor: any;
 
   constructor(  private behaviourSrv: BindBehaviorService,
-                public toastSrv: ToastService,
-                private store: Store<any>,
-                 ) { }
+                public toastSrv: ToastService ) { }
 
   ngOnInit() {
     this.behaviourSrv.$getDataItem.subscribe( (resp: IProduct) =>{
       this.productItem = resp;
       console.log( this.productItem);
-      
     }).unsubscribe();
   }
 
@@ -35,10 +32,10 @@ export class DetailProductPage implements OnInit {
   }
 
   selectColor( evt: any ){    
-    this.radioColor = evt.detail.value;
+    this.radioColor = evt.detail.value;    
   }
 
-  setProductCart(paramItem : any){
+  setProductCart(paramItem){
 
     if(this.radioColor === undefined){
       this.toastSrv.showToastAlert('Selecciona un color!');

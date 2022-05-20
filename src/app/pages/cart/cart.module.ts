@@ -8,6 +8,12 @@ import { CartPageRoutingModule } from './cart-routing.module';
 
 import { CartPage } from './cart.page';
 import { ComponentsModule } from 'src/app/components/components.module';
+import { ProductFacade } from 'src/app/redux/product/product.facade';
+import { EffectsModule } from '@ngrx/effects';
+import { ProductsEffects } from 'src/app/redux/product/product.effects';
+import { ApiProductsService } from 'src/app/services/api-products.service';
+import { CartEffects } from 'src/app/redux/cart/cart.effects';
+import { CartFacade } from 'src/app/redux/cart/cart.facade';
 
 @NgModule({
   imports: [
@@ -15,8 +21,15 @@ import { ComponentsModule } from 'src/app/components/components.module';
     FormsModule,
     IonicModule,
     CartPageRoutingModule,
-    ComponentsModule
+    ComponentsModule,
+    EffectsModule.forFeature([
+      ProductsEffects
+    ])
   ],
-  declarations: [CartPage]
+  declarations: [CartPage],
+  providers:[
+    ProductFacade, 
+    ApiProductsService
+  ]
 })
 export class CartPageModule {}

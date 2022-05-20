@@ -17,7 +17,7 @@ export class CartEffects {
                 () => this.service.getCartProducts()
                 .pipe(
                     map(
-                        (resp) => cartActions.setCartItemsAction({ cartItems: resp })
+                        (resp) => cartActions.setCartItemsAction({ items: resp })
                     ),
                     catchError( err => of(cartActions.setErrorAction({payload: err})))
                 )

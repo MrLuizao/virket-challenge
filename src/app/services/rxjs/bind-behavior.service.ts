@@ -9,11 +9,18 @@ export class BindBehaviorService {
 
   detailDataItem = new BehaviorSubject<any>({});
   public $getDataItem = this.detailDataItem.asObservable();
+
+  dataCartBind = new BehaviorSubject<any>([]);
+  public $getDataCart = this.dataCartBind.asObservable();
   
   constructor() { }
 
   setDataItem(item: IProduct){
     this.detailDataItem.next(item);
+  }
+
+  setDataCart(data: any){
+    this.dataCartBind.next(data);
   }
 
 }

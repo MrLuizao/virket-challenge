@@ -28,6 +28,8 @@ export const enum ProductActions {
     loadCartItems = '[CART] load cart items',
     setCartItems = '[CART] cart items',
     setError = '[CART] set error in cart module',
+
+    addItem = '[CART] add item',
 }
 
 export const loadItems = createAction(
@@ -36,10 +38,16 @@ export const loadItems = createAction(
 
 export const setCartItemsAction = createAction(
     ProductActions.setCartItems,
-    props<{ cartItems: Product[] }>()
+    props<{ items: Product[] }>()
 );
 
 export const setErrorAction = createAction(
     ProductActions.setError,
     props<{ payload: any }>()
+);
+
+
+export const addItemAction = createAction(
+    ProductActions.addItem,
+    props<{ item: Product }>()
 );

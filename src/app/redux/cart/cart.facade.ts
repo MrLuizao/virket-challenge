@@ -22,4 +22,12 @@ export class CartFacade {
     getCartItems() {
         return this.store.dispatch(fromActions.loadItems());
     }
+
+    get addItem$() {
+        return this.store.select(fromSelector.cartAddItemSelector);
+    }
+
+    // updateCartItems() {
+    //     return this.store.dispatch(fromActions.addItemAction());
+    // }
 }
