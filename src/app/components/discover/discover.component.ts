@@ -43,7 +43,8 @@ export class DiscoverComponent implements OnInit {
     this.router.navigateByUrl('detail-product');
   }
 
-  addToCart(paramItem: Product){    
+  addToCart(paramItem: Product){   
+    console.log('paramItem', paramItem);
     this.cartFacade.addItem(paramItem);
     this.toastSrv.showToastAlert('Producto agregado correctamente');
   }

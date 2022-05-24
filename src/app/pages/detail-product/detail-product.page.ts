@@ -1,6 +1,7 @@
 import { Component, DebugElement, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { IProduct } from 'src/app/interfaces/product.interface';
+import { CartFacade } from 'src/app/redux/cart/cart.facade';
+import { Product } from 'src/app/redux/models/product.model';
 // import { AddCartItem } from 'src/app/redux/cart/cart.actions';
 // import { AddItemAction } from 'src/app/redux/product/product.actions';
 import { ToastService } from 'src/app/services/alerts/toast.service';
@@ -14,14 +15,15 @@ import { BindBehaviorService } from 'src/app/services/rxjs/bind-behavior.service
 export class DetailProductPage implements OnInit {
 
   isOpen: boolean = false;
-  productItem: IProduct;
+  productItem: Product;
   radioColor: any;
 
   constructor(  private behaviourSrv: BindBehaviorService,
+                private cartFacade: CartFacade,        
                 public toastSrv: ToastService ) { }
 
   ngOnInit() {
-    this.behaviourSrv.$getDataItem.subscribe( (resp: IProduct) =>{
+    this.behaviourSrv.$getDataItem.subscribe( (resp: Product) =>{
       this.productItem = resp;
     }).unsubscribe();
   }
@@ -34,16 +36,14 @@ export class DetailProductPage implements OnInit {
     this.radioColor = evt.detail.value;    
   }
 
-  setProductCart(paramItem){
+  setProductCart(paramItem: Product){  
+    console.log('paramItem', paramItem);
 
     if(this.radioColor === undefined){
       this.toastSrv.showToastAlert('Selecciona un color!');
       return
-    }
-    
-    let product = { ...paramItem, color: this.radioColor }
-
-    // this.store.dispatch( new AddCartItem(product));
+    } 
+    this.cartFacade.addItem(paramItem);
     this.toastSrv.showToastAlert('Producto agregado correctamente');
   }
 
